@@ -66,6 +66,29 @@
             position: relative;
             overflow: hidden;
             box-shadow: 8px 8px 0 #1A1A1A;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero.has-custom-bg {
+            background-blend-mode: overlay;
+        }
+
+        .hero.has-custom-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 204, 0, 0.8);
+            z-index: 1;
         }
 
         .hero::before {
@@ -80,13 +103,15 @@
         }
 
         .hero-image {
+            position: relative;
+            z-index: 2;
             text-align: center;
             margin-bottom: 20px;
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             text-align: center;
         }
 
@@ -857,6 +882,9 @@
         // Load any additional promo codes from localStorage
         const additionalCodes = JSON.parse(localStorage.getItem('jamAdditionalCodes') || '[]');
         promoCodes = [...PROMO_CODES, ...additionalCodes];
+        
+        // Hero banner management
+        let customHeroBanner = localStorage.getItem('jamCustomHeroBanner');
 
         // Initialize promo codes count display
         function updatePromoStats() {
@@ -948,6 +976,20 @@
                             <h3>用户数据管理</h3>
                             <button onclick="exportUsersToCSV()" style="background: #0147FE; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">📊 导出用户数据</button>
                             <button onclick="clearUserData()" style="background: #FF3B30; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">🗑️ 清空用户数据</button>
+                        </div>
+                        
+                        <!-- Campaign Visuals Management -->
+                        <div style="margin: 20px 0;">
+                            <h3>活动视觉管理</h3>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+                                <p style="margin: 0 0 10px 0; color: #666; font-size: 13px;">
+                                    当前横幅状态: <strong style="color: ${customHeroBanner ? '#61BA47' : '#FF9500'};">${customHeroBanner ? '自定义图片' : '默认设计'}</strong>
+                                </p>
+                                <button onclick="uploadHeroBanner()" style="background: #0147FE; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">🖼️ 上传英雄横幅</button>
+                                <button onclick="previewCurrentBanner()" style="background: #5C5C5C; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">👁️ 预览当前横幅</button>
+                                ${customHeroBanner ? '<button onclick="resetHeroBanner()" style="background: #FF3B30; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">🔄 恢复默认</button>' : ''}
+                            </div>
+                            <small style="color: #666;">建议尺寸: 1200x400px | 格式: JPG/PNG/WebP | 大小: <2MB</small>
                         </div>
                         
                         <!-- Promo Code Management -->
@@ -1175,6 +1217,157 @@
             }
         }
 
+        // Hero Banner Management Functions
+        function uploadHeroBanner() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/jpeg,image/jpg,image/png,image/webp';
+            
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                // Validate file size (max 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('图片文件过大，请选择小于2MB的图片');
+                    return;
+                }
+                
+                // Validate file type
+                if (!file.type.match(/^image\/(jpeg|jpg|png|webp)$/)) {
+                    alert('请选择 JPG、PNG 或 WebP 格式的图片');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        // Create canvas for image optimization
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        
+                        // Calculate optimal dimensions (max 1200x400, maintain aspect ratio)
+                        const maxWidth = 1200;
+                        const maxHeight = 400;
+                        let { width, height } = img;
+                        
+                        if (width > maxWidth) {
+                            height = (height * maxWidth) / width;
+                            width = maxWidth;
+                        }
+                        
+                        if (height > maxHeight) {
+                            width = (width * maxHeight) / height;
+                            height = maxHeight;
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        
+                        // Draw and compress image
+                        ctx.drawImage(img, 0, 0, width, height);
+                        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                        
+                        // Save to localStorage
+                        localStorage.setItem('jamCustomHeroBanner', compressedDataUrl);
+                        customHeroBanner = compressedDataUrl;
+                        
+                        // Apply to hero section
+                        applyCustomHeroBanner();
+                        
+                        alert('英雄横幅已成功上传并应用！');
+                        
+                        // Refresh admin panel if open
+                        closeAdminPanel();
+                        showAdminPanel();
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            };
+            
+            input.click();
+        }
+
+        function applyCustomHeroBanner() {
+            const heroSection = document.querySelector('.hero');
+            if (customHeroBanner && heroSection) {
+                heroSection.style.backgroundImage = `url(${customHeroBanner})`;
+                heroSection.classList.add('has-custom-bg');
+            }
+        }
+
+        function resetHeroBanner() {
+            if (confirm('确定要恢复默认的英雄横幅吗？')) {
+                localStorage.removeItem('jamCustomHeroBanner');
+                customHeroBanner = null;
+                
+                const heroSection = document.querySelector('.hero');
+                if (heroSection) {
+                    heroSection.style.backgroundImage = '';
+                    heroSection.classList.remove('has-custom-bg');
+                }
+                
+                alert('已恢复默认英雄横幅');
+                
+                // Refresh admin panel if open
+                closeAdminPanel();
+                showAdminPanel();
+            }
+        }
+
+        function previewCurrentBanner() {
+            const heroSection = document.querySelector('.hero');
+            if (!heroSection) return;
+            
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 600;
+            canvas.height = 200;
+            
+            if (customHeroBanner) {
+                const img = new Image();
+                img.onload = function() {
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    // Add overlay
+                    ctx.fillStyle = 'rgba(255, 204, 0, 0.8)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Open preview in new window
+                    const win = window.open('', '_blank', 'width=620,height=240');
+                    win.document.write(`
+                        <html>
+                            <head><title>Hero Banner Preview</title></head>
+                            <body style="margin:0;background:#f0f0f0;display:flex;align-items:center;justify-content:center;">
+                                <img src="${canvas.toDataURL()}" style="border:3px solid #1A1A1A;border-radius:12px;">
+                            </body>
+                        </html>
+                    `);
+                };
+                img.src = customHeroBanner;
+            } else {
+                // Draw default banner
+                ctx.fillStyle = '#FFCC00';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#1A1A1A';
+                ctx.font = 'bold 48px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('JAM', canvas.width/2, canvas.height/2 + 15);
+                
+                const win = window.open('', '_blank', 'width=620,height=240');
+                win.document.write(`
+                    <html>
+                        <head><title>Hero Banner Preview - Default</title></head>
+                        <body style="margin:0;background:#f0f0f0;display:flex;align-items:center;justify-content:center;">
+                            <img src="${canvas.toDataURL()}" style="border:3px solid #1A1A1A;border-radius:12px;">
+                        </body>
+                    </html>
+                `);
+            }
+        }
+
         // Admin access via console or URL parameter
         if (window.location.search.includes('admin=true')) {
             showAdminPanel();
@@ -1183,6 +1376,11 @@
         // Initialize promo codes on page load
         document.addEventListener('DOMContentLoaded', function() {
             updatePromoStats();
+            
+            // Apply custom hero banner if exists
+            if (customHeroBanner) {
+                applyCustomHeroBanner();
+            }
             
             // Add keyboard shortcut for admin access (Ctrl+Shift+A)
             document.addEventListener('keydown', function(e) {
