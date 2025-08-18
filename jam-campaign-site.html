@@ -778,6 +778,9 @@
         
         // Hero banner management
         let customHeroBanner = localStorage.getItem('jamCustomHeroBanner');
+        
+        // WeChat QR code management
+        let customWeChatQR = localStorage.getItem('jamCustomWeChatQR');
 
         // Initialize promo codes count display
         function updatePromoStats() {
@@ -874,15 +877,31 @@
                         <!-- Campaign Visuals Management -->
                         <div style="margin: 20px 0;">
                             <h3>活动视觉管理</h3>
-                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+                            
+                            <!-- Hero Banner Section -->
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                                <h4 style="margin: 0 0 10px 0; color: #333; font-size: 14px;">英雄横幅</h4>
                                 <p style="margin: 0 0 10px 0; color: #666; font-size: 13px;">
                                     当前横幅状态: <strong style="color: ${customHeroBanner ? '#61BA47' : '#FF9500'};">${customHeroBanner ? '自定义图片' : '默认设计'}</strong>
                                 </p>
                                 <button onclick="uploadHeroBanner()" style="background: #0147FE; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">🖼️ 上传英雄横幅</button>
                                 <button onclick="previewCurrentBanner()" style="background: #5C5C5C; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">👁️ 预览当前横幅</button>
                                 ${customHeroBanner ? '<button onclick="resetHeroBanner()" style="background: #FF3B30; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">🔄 恢复默认</button>' : ''}
+                                <br><small style="color: #666;">建议尺寸: 1200x400px | 格式: JPG/PNG/WebP | 大小: <2MB</small>
                             </div>
-                            <small style="color: #666;">建议尺寸: 1200x400px | 格式: JPG/PNG/WebP | 大小: <2MB</small>
+                            
+                            <!-- WeChat QR Code Section -->
+                            <div style="background: #f0f8f0; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+                                <h4 style="margin: 0 0 10px 0; color: #333; font-size: 14px;">微信客服二维码</h4>
+                                <p style="margin: 0 0 10px 0; color: #666; font-size: 13px;">
+                                    当前状态: <strong style="color: ${customWeChatQR ? '#61BA47' : '#999'};">${customWeChatQR ? '已上传二维码' : '未上传 (不显示)'}</strong>
+                                </p>
+                                <button onclick="uploadWeChatQR()" style="background: #61BA47; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">📱 上传微信二维码</button>
+                                ${customWeChatQR ? '<button onclick="previewWeChatQR()" style="background: #5C5C5C; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">👁️ 预览二维码</button>' : ''}
+                                ${customWeChatQR ? '<button onclick="resetWeChatQR()" style="background: #FF3B30; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">🗑️ 删除二维码</button>' : ''}
+                                <br><small style="color: #666;">建议尺寸: 正方形 | 格式: JPG/PNG/WebP | 大小: <2MB</small>
+                                <br><small style="color: #666;">说明: 上传后将在兑换页面显示微信客服联系方式</small>
+                            </div>
                         </div>
                         
                         <!-- Promo Code Management -->
@@ -1268,6 +1287,125 @@
             }
         }
 
+        // WeChat QR Code Management Functions
+        function uploadWeChatQR() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/jpeg,image/jpg,image/png,image/webp';
+            
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                // Validate file size (max 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('图片文件过大，请选择小于2MB的图片');
+                    return;
+                }
+                
+                // Validate file type
+                if (!file.type.match(/^image\/(jpeg|jpg|png|webp)$/)) {
+                    alert('请选择 JPG、PNG 或 WebP 格式的图片');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        // Create canvas for image optimization
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        
+                        // Calculate optimal dimensions (square QR code, max 400x400)
+                        const maxSize = 400;
+                        let { width, height } = img;
+                        
+                        // Make it square by using the smaller dimension
+                        const size = Math.min(width, height, maxSize);
+                        
+                        canvas.width = size;
+                        canvas.height = size;
+                        
+                        // Draw and compress image (centered if not square)
+                        const offsetX = (width - size) / 2;
+                        const offsetY = (height - size) / 2;
+                        ctx.drawImage(img, offsetX, offsetY, size, size, 0, 0, size, size);
+                        const compressedDataUrl = canvas.toDataURL('image/png', 0.9);
+                        
+                        // Save to localStorage
+                        localStorage.setItem('jamCustomWeChatQR', compressedDataUrl);
+                        customWeChatQR = compressedDataUrl;
+                        
+                        // Apply to QR section
+                        applyCustomWeChatQR();
+                        
+                        alert('微信二维码已成功上传并应用！');
+                        
+                        // Refresh admin panel if open
+                        closeAdminPanel();
+                        showAdminPanel();
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            };
+            
+            input.click();
+        }
+
+        function applyCustomWeChatQR() {
+            const qrSection = document.querySelector('.cs-qr-section');
+            const qrImage = document.querySelector('.cs-qr-code-display img');
+            
+            if (customWeChatQR && qrImage) {
+                qrImage.src = customWeChatQR;
+                qrImage.style.display = 'block';
+                qrImage.nextElementSibling.style.display = 'none'; // Hide fallback
+            }
+            
+            // Show/hide the entire QR section based on whether we have a QR code
+            if (qrSection) {
+                qrSection.style.display = customWeChatQR ? 'flex' : 'none';
+            }
+        }
+
+        function resetWeChatQR() {
+            if (confirm('确定要删除微信客服二维码吗？\n\n删除后，页面将不再显示微信客服联系方式。')) {
+                localStorage.removeItem('jamCustomWeChatQR');
+                customWeChatQR = null;
+                
+                // Hide the QR section
+                const qrSection = document.querySelector('.cs-qr-section');
+                if (qrSection) {
+                    qrSection.style.display = 'none';
+                }
+                
+                alert('微信客服二维码已删除');
+                
+                // Refresh admin panel if open
+                closeAdminPanel();
+                showAdminPanel();
+            }
+        }
+
+        function previewWeChatQR() {
+            if (customWeChatQR) {
+                const win = window.open('', '_blank', 'width=320,height=380');
+                win.document.write(`
+                    <html>
+                        <head><title>WeChat QR Code Preview</title></head>
+                        <body style="margin:0;background:#f0f0f0;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px;">
+                            <h3 style="margin-bottom:15px;color:#333;">微信客服二维码预览</h3>
+                            <img src="${customWeChatQR}" style="border:3px solid #1A1A1A;border-radius:12px;width:250px;height:250px;object-fit:cover;">
+                        </body>
+                    </html>
+                `);
+            } else {
+                alert('当前没有上传微信二维码');
+            }
+        }
+
         // Admin access via console or URL parameter
         if (window.location.search.includes('admin=true')) {
             showAdminPanel();
@@ -1280,6 +1418,17 @@
             // Apply custom hero banner if exists
             if (customHeroBanner) {
                 applyCustomHeroBanner();
+            }
+            
+            // Apply custom WeChat QR code if exists
+            if (customWeChatQR) {
+                applyCustomWeChatQR();
+            } else {
+                // Hide QR section if no QR code uploaded
+                const qrSection = document.querySelector('.cs-qr-section');
+                if (qrSection) {
+                    qrSection.style.display = 'none';
+                }
             }
             
             // Add keyboard shortcut for admin access (Ctrl+Shift+A)
