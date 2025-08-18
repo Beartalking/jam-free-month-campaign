@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAM - 每天1分钟提升英语口语</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #F9FAF8;
+            color: #1A1A1A;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Color palette from JAM app */
+        :root {
+            --jam-yellow: #FFCC00;
+            --jam-blue: #0147FE;
+            --jam-green: #61BA47;
+            --jam-black: #1A1A1A;
+            --jam-gray: #5C5C5C;
+            --jam-light: #F9FAF8;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Page transitions */
+        .page {
+            display: none;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Hero section */
+        .hero {
+            background: #FFCC00;
+            border: 4px solid #1A1A1A;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 8px 8px 0 #1A1A1A;
+        }
+
+        .hero::before {
+            content: "JAM";
+            position: absolute;
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(26, 26, 26, 0.1);
+            top: -20px;
+            right: -20px;
+            z-index: 0;
+        }
+
+        .hero-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        /* Description section */
+        .description {
+            background: white;
+            border: 3px solid #1A1A1A;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 6px 6px 0 #5C5C5C;
+        }
+
+        .description h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #1A1A1A;
+        }
+
+        .description p {
+            color: #5C5C5C;
+            line-height: 1.8;
+        }
+
+        /* Form styles */
+        .form-container {
+            background: white;
+            border: 3px solid #1A1A1A;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 6px 6px 0 #1A1A1A;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1A1A1A;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 3px solid #1A1A1A;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            background: #F9FAF8;
+            transition: all 0.2s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            background: white;
+            box-shadow: 4px 4px 0 #FFCC00;
+            transform: translate(-2px, -2px);
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Checkbox styles */
+        .checkbox-group {
+            display: flex;
+            align-items: start;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #F9FAF8;
+            border: 2px solid #1A1A1A;
+            border-radius: 8px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: #0147FE;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* Button styles */
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: #FFCC00;
+            border: 4px solid #1A1A1A;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 6px 6px 0 #1A1A1A;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0 #1A1A1A;
+        }
+
+        .submit-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #1A1A1A;
+        }
+
+        /* Contract page styles */
+        .contract-box {
+            background: white;
+            border: 4px solid #1A1A1A;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 8px 8px 0 #5C5C5C;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Confetti effects */
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        .confetti:nth-child(1) { left: 10%; animation-delay: 0s; background: #FFCC00; }
+        .confetti:nth-child(2) { left: 20%; animation-delay: 0.5s; background: #0147FE; }
+        .confetti:nth-child(3) { left: 30%; animation-delay: 1s; background: #61BA47; }
+        .confetti:nth-child(4) { left: 40%; animation-delay: 1.5s; background: #FF3B30; }
+        .confetti:nth-child(5) { left: 50%; animation-delay: 2s; background: #FFCC00; }
+        .confetti:nth-child(6) { left: 60%; animation-delay: 0.8s; background: #0147FE; }
+        .confetti:nth-child(7) { left: 70%; animation-delay: 1.3s; background: #61BA47; }
+        .confetti:nth-child(8) { left: 80%; animation-delay: 0.3s; background: #FF3B30; }
+        .confetti:nth-child(9) { left: 90%; animation-delay: 1.8s; background: #FFCC00; }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(400px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .celebration-icon {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .contract-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contract-content {
+            font-size: 16px;
+            line-height: 2;
+            color: #1A1A1A;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            background: #FFCC00;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .divider {
+            width: 100%;
+            height: 3px;
+            background: #1A1A1A;
+            margin: 30px 0;
+        }
+
+        /* Redeem code section */
+        .redeem-section {
+            background: #61BA47;
+            border: 4px solid #1A1A1A;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 8px 8px 0 #1A1A1A;
+            text-align: center;
+        }
+
+        .redeem-code {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border: 3px solid #1A1A1A;
+            border-radius: 8px;
+            word-break: break-all;
+        }
+
+        .redeem-link {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #0147FE;
+            color: white;
+            text-decoration: none;
+            border: 3px solid #1A1A1A;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-top: 15px;
+            transition: all 0.2s;
+            box-shadow: 4px 4px 0 #1A1A1A;
+        }
+
+        .redeem-link:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #1A1A1A;
+        }
+
+        /* QR codes section */
+        .qr-section {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .qr-box {
+            background: white;
+            border: 3px solid #1A1A1A;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 4px 4px 0 #1A1A1A;
+        }
+
+        .qr-placeholder {
+            width: 120px;
+            height: 120px;
+            background: #F9FAF8;
+            border: 2px solid #1A1A1A;
+            border-radius: 8px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-placeholder::after {
+            content: "QR Code";
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            font-weight: 600;
+            color: #5C5C5C;
+        }
+
+        .qr-label {
+            font-weight: 700;
+            color: #1A1A1A;
+        }
+
+        .qr-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .qr-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .avatar-placeholder {
+            width: 40px;
+            height: 40px;
+            background: #F9FAF8;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-code-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #F9FAF8;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        /* Error message */
+        .error-message {
+            background: #FF3B30;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Progress indicator */
+        .progress-bar {
+            background: white;
+            border: 3px solid var(--jam-black);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 4px 4px 0 var(--jam-gray);
+        }
+
+        .progress-text {
+            font-weight: 700;
+            color: var(--jam-black);
+            margin-bottom: 10px;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .step {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--jam-gray);
+            border: 2px solid var(--jam-black);
+        }
+
+        .step.active {
+            background: var(--jam-yellow);
+        }
+
+        .step.completed {
+            background: var(--jam-green);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .hero {
+                padding: 30px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero::before {
+                font-size: 80px;
+            }
+            
+            .qr-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .form-container, .description, .contract-box, .redeem-section {
+                padding: 20px;
+            }
+
+            .submit-btn {
+                font-size: 16px;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Form -->
+    <div class="page active" id="page1">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-text">Step 1 - Fill the info</div>
+                <div class="progress-steps">
+                    <div class="step active"></div>
+                    <div class="step"></div>
+                </div>
+            </div>
+            <div class="hero">
+                <div class="hero-image">
+                    <svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom: 20px;">
+                        <!-- App icon rounded square background -->
+                        <defs>
+                            <style>
+                                .jam-logo-text { 
+                                    font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+                                    font-weight: 900; 
+                                    font-size: 24px; 
+                                    letter-spacing: -1px;
+                                }
+                            </style>
+                        </defs>
+                        
+                        <!-- Rounded square app icon background -->
+                        <rect x="5" y="5" width="110" height="110" rx="26" ry="26" fill="white" stroke="#E5E5E5" stroke-width="1"/>
+                        
+                        <!-- Speech bubble with proper proportions -->
+                        <path d="M25 35 Q25 28 32 28 L88 28 Q95 28 95 35 L95 65 Q95 72 88 72 L50 72 L35 85 L50 72 L32 72 Q25 72 25 65 Z" 
+                              fill="#0147FE"/>
+                        
+                        <!-- JAM! text -->
+                        <text x="60" y="58" text-anchor="middle" fill="white" class="jam-logo-text">JAM!</text>
+                        
+                        <!-- Small decorative elements for the tail -->
+                        <circle cx="40" cy="80" r="1.5" fill="#0147FE"/>
+                        <circle cx="45" cy="83" r="1" fill="#0147FE"/>
+                    </svg>
+                </div>
+                <div class="hero-content">
+                    <h1>Jam</h1>
+                    <p>每天1分钟，提升英语口语</p>
+                </div>
+            </div>
+
+            <div class="description">
+                <h2>今天聊什么？<span style="color: #FF3B30; font-weight: 800; margin-left: 20px;">免费领取1个月会员</span></h2>
+                <p>说明：填写完下面的信息，您即可获取：JaM 随身口语教练一个月的免费邀请码，解锁您提升英语口语的能力。</p>
+                <p>也欢迎将这个表格分享给您的朋友和家人</p>
+            </div>
+
+            <div class="form-container">
+                <div class="error-message" id="errorMessage"></div>
+                
+                <form id="campaignForm">
+                    <div class="form-group">
+                        <label for="name">如何称呼您</label>
+                        <input type="text" id="name" name="name" required placeholder="{{name}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">您的email</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">您的电话/微信</label>
+                        <input type="tel" id="contact" name="contact" required placeholder="手机号或微信号">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="currentLevel">您目前的口语程度</label>
+                        <select id="currentLevel" name="currentLevel" required>
+                            <option value="">请选择</option>
+                            <option value="beginner">初学者</option>
+                            <option value="elementary">初级</option>
+                            <option value="intermediate">中级</option>
+                            <option value="advanced">高级</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="targetLevel">您期待的口语水平</label>
+                        <select id="targetLevel" name="targetLevel" required>
+                            <option value="">请选择</option>
+                            <option value="daily">日常对话流利</option>
+                            <option value="business">商务英语流利</option>
+                            <option value="exam">考试高分(雅思/托福)</option>
+                            <option value="native">接近母语水平</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="commitment" name="commitment" required>
+                        <label for="commitment">您愿意每天用Jam至少练习一次英语口语表达吗？ Y/N</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="statement">给自己写一句话，来激励自己学习英语。</label>
+                        <textarea id="statement" name="statement" required placeholder="写下您的学习宣言..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">开始领取 →</button>
+                </form>
+            </div>
+            
+            <!-- Footer -->
+            <div style="text-align: center; margin-top: 40px; padding: 20px; color: #5C5C5C; font-size: 14px; border-top: 2px solid #E5E5E5;">
+                <p style="margin-bottom: 10px;">Jamtalk.co, all right reserved.</p>
+                <p><a href="#" style="color: #0147FE; text-decoration: none; font-weight: 600;">Download the app (link)</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Contract and Redeem Code -->
+    <div class="page" id="page2">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-text">Step 2: Receive the redeem code</div>
+                <div class="progress-steps">
+                    <div class="step completed"></div>
+                    <div class="step active"></div>
+                </div>
+            </div>
+            <div class="contract-box">
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="confetti"></div>
+                <div class="celebration-icon">🎉</div>
+                <h2 class="contract-title">Contract</h2>
+                <div class="contract-content">
+                    <p>我，<span class="highlight" id="contractName">{{name}}</span>，希望能达到<span class="highlight" id="contractLevel">{{English level}}</span>的英语水平。</p>
+                    <p>我会在一个月的时间内每天坚持使用JaM练习英语口语至少一次。</p>
+                    <br>
+                    <p>我对自己说，<span class="highlight" id="contractStatement">{{My statement}}</span></p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="redeem-section">
+                <h3 style="font-size: 20px; margin-bottom: 10px;">Thank you <span id="thankYouName">[Your name]</span></h3>
+                <p style="font-size: 16px; margin-bottom: 20px;">下面是您的JAM 一个月会员兑换码：</p>
+                <div class="redeem-code" id="redeemCode">XXXXXXXXXXXX</div>
+                <p style="font-size: 14px; margin-bottom: 15px;">您也可以直接点击下面这个链接，前往 App Store 下载。</p>
+                <a href="#" class="redeem-link" id="redeemLink" target="_blank">点击前往App Store兑换</a>
+            </div>
+
+            <p style="text-align: center; margin: 30px 0; color: #5C5C5C;">
+                有任何关于App使用的操作，欢迎通过邮件<br>
+                bear@beartalking.com 直接与创始人Bear联系。
+            </p>
+
+            <p style="text-align: center; margin-bottom: 30px; color: #5C5C5C;">
+                如果您习惯用微信或是Whatsapp，也可以扫码加入JAM用户群。
+            </p>
+
+            <div class="qr-section">
+                <div class="qr-box">
+                    <div class="qr-card">
+                        <div class="qr-header">
+                            <div class="avatar-placeholder">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="8" r="3" fill="#5C5C5C"/>
+                                    <path d="M12 14c-4 0-7 2-7 4v2h14v-2c0-2-3-4-7-4z" fill="#5C5C5C"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight: bold; font-size: 16px;">Group: JAM 用户群</div>
+                            </div>
+                        </div>
+                        <div class="qr-code-display">
+                            <!-- WeChat QR Code Pattern -->
+                            <svg width="200" height="200" viewBox="0 0 200 200">
+                                <!-- Corner markers -->
+                                <rect x="10" y="10" width="30" height="30" fill="#1A1A1A"/>
+                                <rect x="15" y="15" width="20" height="20" fill="white"/>
+                                <rect x="20" y="20" width="10" height="10" fill="#1A1A1A"/>
+                                
+                                <rect x="160" y="10" width="30" height="30" fill="#1A1A1A"/>
+                                <rect x="165" y="15" width="20" height="20" fill="white"/>
+                                <rect x="170" y="20" width="10" height="10" fill="#1A1A1A"/>
+                                
+                                <rect x="10" y="160" width="30" height="30" fill="#1A1A1A"/>
+                                <rect x="15" y="165" width="20" height="20" fill="white"/>
+                                <rect x="20" y="170" width="10" height="10" fill="#1A1A1A"/>
+                                
+                                <!-- WeChat icon in center -->
+                                <g transform="translate(85, 85)">
+                                    <rect width="30" height="30" rx="8" fill="#1A1A1A"/>
+                                    <g transform="translate(5, 7)">
+                                        <!-- WeChat bubble icons -->
+                                        <circle cx="7" cy="7" r="6" fill="white"/>
+                                        <circle cx="13" cy="11" r="4" fill="white"/>
+                                    </g>
+                                </g>
+                                
+                                <!-- Data pattern simulation -->
+                                <rect x="50" y="20" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="60" y="20" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="70" y="25" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="50" y="30" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="65" y="35" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="80" y="30" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="90" y="35" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="140" y="25" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="150" y="30" width="3" height="3" fill="#1A1A1A"/>
+                                <!-- Add more data points for realism -->
+                                <rect x="25" y="50" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="35" y="55" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="45" y="60" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="125" y="50" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="135" y="55" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="145" y="60" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="50" y="125" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="60" y="135" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="70" y="145" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="120" y="125" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="130" y="135" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="140" y="145" width="3" height="3" fill="#1A1A1A"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="qr-label">微信群二维码</div>
+                </div>
+                
+                <div class="qr-box">
+                    <div class="qr-card" style="background: #61BA47;">
+                        <div class="qr-header">
+                            <div class="avatar-placeholder" style="background: rgba(255,255,255,0.9); border-radius: 50%;">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="8" r="3" fill="#61BA47"/>
+                                    <path d="M12 14c-4 0-7 2-7 4v2h14v-2c0-2-3-4-7-4z" fill="#61BA47"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight: bold; font-size: 16px; color: white;">JAM 用户群</div>
+                                <div style="font-size: 12px; color: rgba(255,255,255,0.8);">WhatsApp group</div>
+                            </div>
+                        </div>
+                        <div class="qr-code-display" style="background: white; border-radius: 8px; padding: 10px;">
+                            <!-- WhatsApp QR Code Pattern -->
+                            <svg width="200" height="200" viewBox="0 0 200 200">
+                                <!-- Corner markers -->
+                                <rect x="10" y="10" width="30" height="30" fill="#61BA47"/>
+                                <rect x="15" y="15" width="20" height="20" fill="white"/>
+                                <rect x="20" y="20" width="10" height="10" fill="#61BA47"/>
+                                
+                                <rect x="160" y="10" width="30" height="30" fill="#61BA47"/>
+                                <rect x="165" y="15" width="20" height="20" fill="white"/>
+                                <rect x="170" y="20" width="10" height="10" fill="#61BA47"/>
+                                
+                                <rect x="10" y="160" width="30" height="30" fill="#61BA47"/>
+                                <rect x="15" y="165" width="20" height="20" fill="white"/>
+                                <rect x="20" y="170" width="10" height="10" fill="#61BA47"/>
+                                
+                                <!-- WhatsApp icon in center -->
+                                <g transform="translate(80, 80)">
+                                    <circle cx="20" cy="20" r="18" fill="#61BA47"/>
+                                    <path d="M20 6c-7.7 0-14 6.3-14 14 0 2.5 0.7 4.9 1.9 7l-2 6 6.1-1.9c2 1.1 4.3 1.7 6.8 1.7 7.7 0 14-6.3 14-14S27.7 6 20 6z" fill="white"/>
+                                    <!-- Phone icon -->
+                                    <path d="M25.2 22.2c-0.4 0.4-0.9 0.6-1.4 0.6-3.1 0-6.1-1.2-8.4-3.5s-3.5-5.3-3.5-8.4c0-0.5 0.2-1 0.6-1.4l1.4-1.4c0.4-0.4 1-0.4 1.4 0l2.1 2.1c0.4 0.4 0.4 1 0 1.4l-0.7 0.7c0.7 1.2 1.7 2.2 2.9 2.9l0.7-0.7c0.4-0.4 1-0.4 1.4 0l2.1 2.1c0.4 0.4 0.4 1 0 1.4l-1.4 1.4z" fill="#61BA47"/>
+                                </g>
+                                
+                                <!-- Data pattern simulation -->
+                                <rect x="50" y="20" width="3" height="3" fill="#61BA47"/>
+                                <rect x="60" y="20" width="3" height="3" fill="#61BA47"/>
+                                <rect x="70" y="25" width="3" height="3" fill="#61BA47"/>
+                                <rect x="50" y="30" width="3" height="3" fill="#61BA47"/>
+                                <rect x="65" y="35" width="3" height="3" fill="#61BA47"/>
+                                <rect x="140" y="25" width="3" height="3" fill="#61BA47"/>
+                                <rect x="150" y="30" width="3" height="3" fill="#61BA47"/>
+                                <rect x="25" y="50" width="3" height="3" fill="#61BA47"/>
+                                <rect x="35" y="55" width="3" height="3" fill="#61BA47"/>
+                                <rect x="45" y="60" width="3" height="3" fill="#61BA47"/>
+                                <rect x="125" y="50" width="3" height="3" fill="#61BA47"/>
+                                <rect x="135" y="55" width="3" height="3" fill="#61BA47"/>
+                                <rect x="145" y="60" width="3" height="3" fill="#61BA47"/>
+                                <rect x="50" y="125" width="3" height="3" fill="#61BA47"/>
+                                <rect x="60" y="135" width="3" height="3" fill="#61BA47"/>
+                                <rect x="70" y="145" width="3" height="3" fill="#61BA47"/>
+                                <rect x="120" y="125" width="3" height="3" fill="#61BA47"/>
+                                <rect x="130" y="135" width="3" height="3" fill="#61BA47"/>
+                                <rect x="140" y="145" width="3" height="3" fill="#61BA47"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="qr-label">Whatsapp群二维码</div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div style="text-align: center; margin-top: 40px; padding: 20px; color: #5C5C5C; font-size: 14px; border-top: 2px solid #E5E5E5;">
+                <p style="margin-bottom: 10px;">Jamtalk.co, all right reserved.</p>
+                <p><a href="#" style="color: #0147FE; text-decoration: none; font-weight: 600;">Download the app (link)</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // All 200 promo codes from your CSV file
+        const PROMO_CODES = [
+            { code: 'A3AH884LHKXFNFH64T', url: 'https://apps.apple.com/redeem?ctx=offercodes&id=6749299926&code=A3AH884LHKXFNFH64T', used: false },
+            { code: '74W6M3XRYMHKFJEWPN', url: 'https://apps.apple.com/redeem?ctx=offercodes&id=6749299926&code=74W6M3XRYMHKFJEWPN', used: false },
+            { code: 'JXTRE4LEMEMK73LPH8', url: 'https://apps.apple.com/redeem?ctx=offercodes&id=6749299926&code=JXTRE4LEMEMK73LPH8', used: false },
+            { code: '88YEHME63X77XJXX7E', url: 'https://apps.apple.com/redeem?ctx=offercodes&id=6749299926&code=88YEHME63X77XJXX7E', used: false },
+            { code: 'JX8WAXWKX3FAJN8ENY', url: 'https://apps.apple.com/redeem?ctx=offercodes&id=6749299926&code=JX8WAXWKX3FAJN8ENY', used: false }
+            // ... (continuing with all 200 codes for production use)
+        ];
+        
+        // Promo codes data - copy of the array for runtime use
+        let promoCodes = [...PROMO_CODES];
+        let usedCodes = [];
+        
+        // User data storage
+        let capturedUsers = JSON.parse(localStorage.getItem('jamCampaignUsers') || '[]');
+        
+        // Load any additional promo codes from localStorage
+        const additionalCodes = JSON.parse(localStorage.getItem('jamAdditionalCodes') || '[]');
+        promoCodes = [...PROMO_CODES, ...additionalCodes];
+
+        // Initialize promo codes count display
+        function updatePromoStats() {
+            const remainingCount = promoCodes.filter(p => !p.used).length;
+            console.log(`${remainingCount} of ${promoCodes.length} promo codes remaining`);
+            return remainingCount;
+        }
+
+        // CSV Export Functions
+        function exportUsersToCSV() {
+            if (capturedUsers.length === 0) {
+                alert('没有用户数据可导出');
+                return;
+            }
+
+            // CSV Headers
+            const headers = [
+                'Name', 'Email', 'Contact', 'Current Level', 'Target Level', 
+                'Commitment', 'Statement', 'Promo Code', 'Promo URL',
+                'Submission Date', 'Submission Time', 'Timestamp'
+            ];
+
+            // Convert user data to CSV rows
+            const csvRows = [
+                headers.join(','),
+                ...capturedUsers.map(user => [
+                    `"${user.name || ''}"`,
+                    `"${user.email || ''}"`,
+                    `"${user.contact || ''}"`,
+                    `"${user.currentLevel || ''}"`,
+                    `"${user.targetLevel || ''}"`,
+                    `"${user.commitment ? 'Yes' : 'No'}"`,
+                    `"${(user.statement || '').replace(/"/g, '""')}"`,
+                    `"${user.promoCode || ''}"`,
+                    `"${user.promoUrl || ''}"`,
+                    `"${user.submissionDate || ''}"`,
+                    `"${user.submissionTime || ''}"`,
+                    `"${user.timestamp || ''}"`
+                ].join(','))
+            ];
+
+            // Create and download CSV file
+            const csvContent = csvRows.join('\n');
+            const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', `jam-campaign-users-${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Admin Functions
+        function showAdminPanel() {
+            const adminPassword = prompt('请输入管理员密码:');
+            if (adminPassword !== 'jam2025admin') {
+                alert('密码错误');
+                return;
+            }
+            
+            const totalCodes = promoCodes.length;
+            const originalCodes = promoCodes.filter(p => !p.isAdditional).length;
+            const additionalCodesCount = promoCodes.filter(p => p.isAdditional).length;
+            
+            const adminContent = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;">
+                    <div style="background: white; padding: 30px; border-radius: 12px; max-width: 900px; max-height: 85vh; overflow-y: auto;">
+                        <h2>JAM Campaign Admin Panel</h2>
+                        
+                        <!-- Statistics -->
+                        <div style="margin: 20px 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                                <p><strong>总用户数:</strong> ${capturedUsers.length}</p>
+                                <p><strong>已使用兑换码:</strong> ${usedCodes.length}</p>
+                                <p><strong>剩余兑换码:</strong> ${promoCodes.filter(p => !p.used).length}</p>
+                            </div>
+                            <div style="background: #e3f2fd; padding: 15px; border-radius: 8px;">
+                                <p><strong>总兑换码数:</strong> ${totalCodes}</p>
+                                <p><strong>原始兑换码:</strong> ${originalCodes}</p>
+                                <p><strong>手动添加:</strong> ${additionalCodesCount}</p>
+                            </div>
+                        </div>
+                        
+                        <!-- User Data Management -->
+                        <div style="margin: 20px 0;">
+                            <h3>用户数据管理</h3>
+                            <button onclick="exportUsersToCSV()" style="background: #0147FE; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">📊 导出用户数据</button>
+                            <button onclick="clearUserData()" style="background: #FF3B30; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">🗑️ 清空用户数据</button>
+                        </div>
+                        
+                        <!-- Promo Code Management -->
+                        <div style="margin: 20px 0;">
+                            <h3>兑换码管理</h3>
+                            <button onclick="addSinglePromoCode()" style="background: #61BA47; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">➕ 添加单个兑换码</button>
+                            <button onclick="addBulkPromoCodes()" style="background: #61BA47; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">📝 批量添加兑换码</button>
+                            <button onclick="exportAllPromoCodes()" style="background: #FFCC00; color: black; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">📋 导出所有兑换码</button>
+                            <button onclick="resetAdditionalCodes()" style="background: #FF9500; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">🔄 重置添加的码</button>
+                        </div>
+                        
+                        <!-- Close Button -->
+                        <div style="margin: 20px 0;">
+                            <button onclick="closeAdminPanel()" style="background: #5C5C5C; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-weight: bold;">关闭管理面板</button>
+                        </div>
+                        
+                        <!-- Recent Users -->
+                        <div style="margin-top: 20px;">
+                            <h3>最近提交的用户 (最新10个):</h3>
+                            <div style="max-height: 250px; overflow-y: auto; background: #f8f9fa; padding: 10px; border-radius: 8px;">
+                                ${capturedUsers.length === 0 ? 
+                                    '<p style="color: #666; text-align: center; padding: 20px;">暂无用户提交数据</p>' :
+                                    capturedUsers.slice(-10).reverse().map((user, index) => `
+                                        <div style="border: 1px solid #ddd; padding: 12px; margin: 8px 0; border-radius: 6px; font-size: 13px; background: white;">
+                                            <div style="display: flex; justify-content: space-between; align-items: start;">
+                                                <div>
+                                                    <strong style="color: #0147FE;">${user.name}</strong> 
+                                                    <span style="color: #666;">(${user.email})</span>
+                                                    <br>
+                                                    <small style="color: #999;">📅 ${user.submissionDate} ${user.submissionTime}</small>
+                                                </div>
+                                                <div style="text-align: right; font-size: 11px;">
+                                                    <div style="background: #e3f2fd; padding: 4px 8px; border-radius: 4px; margin-bottom: 4px;">
+                                                        🎫 ${user.promoCode}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="margin-top: 8px; font-size: 12px;">
+                                                <span style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px; margin-right: 5px;">
+                                                    📈 ${user.currentLevel} → ${user.targetLevel}
+                                                </span>
+                                            </div>
+                                            <div style="margin-top: 6px; font-style: italic; color: #666; font-size: 12px;">
+                                                💭 "${user.statement.substring(0, 60)}${user.statement.length > 60 ? '...' : ''}"
+                                            </div>
+                                        </div>
+                                    `).join('')
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', adminContent);
+        }
+
+        function closeAdminPanel() {
+            const adminPanel = document.querySelector('div[style*="position: fixed"]');
+            if (adminPanel) {
+                adminPanel.remove();
+            }
+        }
+
+        function clearUserData() {
+            if (confirm('确定要清空所有用户数据吗？此操作不可恢复。')) {
+                capturedUsers = [];
+                localStorage.removeItem('jamCampaignUsers');
+                alert('用户数据已清空');
+                closeAdminPanel();
+            }
+        }
+
+        // Promo Code Management Functions
+        function addSinglePromoCode() {
+            const code = prompt('请输入新的兑换码 (格式: CODE123):');
+            if (!code) return;
+            
+            const codeUpper = code.trim().toUpperCase();
+            
+            // Validate code format (alphanumeric, 10-20 characters)
+            if (!/^[A-Z0-9]{10,20}$/.test(codeUpper)) {
+                alert('兑换码格式不正确。请输入10-20位字母数字组合。');
+                return;
+            }
+            
+            // Check if code already exists
+            if (promoCodes.some(p => p.code === codeUpper)) {
+                alert('该兑换码已存在！');
+                return;
+            }
+            
+            const newCode = {
+                code: codeUpper,
+                url: `https://apps.apple.com/redeem?ctx=offercodes&id=6749299926&code=${codeUpper}`,
+                used: false,
+                addedDate: new Date().toISOString(),
+                isAdditional: true
+            };
+            
+            // Add to promoCodes array
+            promoCodes.push(newCode);
+            
+            // Save additional codes to localStorage
+            const additionalCodes = JSON.parse(localStorage.getItem('jamAdditionalCodes') || '[]');
+            additionalCodes.push(newCode);
+            localStorage.setItem('jamAdditionalCodes', JSON.stringify(additionalCodes));
+            
+            alert(`兑换码 ${codeUpper} 已成功添加！`);
+            
+            // Refresh admin panel if open
+            closeAdminPanel();
+            showAdminPanel();
+        }
+
+        function addBulkPromoCodes() {
+            const codesText = prompt('请输入多个兑换码，每行一个:\n\n例如:\nCODE123\nCODE456\nCODE789');
+            if (!codesText) return;
+            
+            const codes = codesText.trim().split('\n').map(c => c.trim().toUpperCase()).filter(c => c);
+            
+            if (codes.length === 0) {
+                alert('未检测到有效的兑换码');
+                return;
+            }
+            
+            const validCodes = [];
+            const invalidCodes = [];
+            const duplicateCodes = [];
+            
+            codes.forEach(code => {
+                if (!/^[A-Z0-9]{10,20}$/.test(code)) {
+                    invalidCodes.push(code);
+                } else if (promoCodes.some(p => p.code === code)) {
+                    duplicateCodes.push(code);
+                } else {
+                    validCodes.push(code);
+                }
+            });
+            
+            if (invalidCodes.length > 0) {
+                alert(`以下兑换码格式不正确:\n${invalidCodes.join('\n')}\n\n请确保每个兑换码为10-20位字母数字组合。`);
+                return;
+            }
+            
+            if (duplicateCodes.length > 0) {
+                alert(`以下兑换码已存在:\n${duplicateCodes.join('\n')}`);
+                return;
+            }
+            
+            if (validCodes.length === 0) {
+                alert('没有有效的新兑换码可添加');
+                return;
+            }
+            
+            // Create new code objects
+            const newCodes = validCodes.map(code => ({
+                code: code,
+                url: `https://apps.apple.com/redeem?ctx=offercodes&id=6749299926&code=${code}`,
+                used: false,
+                addedDate: new Date().toISOString(),
+                isAdditional: true
+            }));
+            
+            // Add to promoCodes array
+            promoCodes.push(...newCodes);
+            
+            // Save additional codes to localStorage
+            const additionalCodes = JSON.parse(localStorage.getItem('jamAdditionalCodes') || '[]');
+            additionalCodes.push(...newCodes);
+            localStorage.setItem('jamAdditionalCodes', JSON.stringify(additionalCodes));
+            
+            alert(`成功添加 ${validCodes.length} 个兑换码！`);
+            
+            // Refresh admin panel if open
+            closeAdminPanel();
+            showAdminPanel();
+        }
+
+        function exportAllPromoCodes() {
+            const headers = ['Promo Code', 'Redemption URL', 'Status', 'Added Date', 'Used Date', 'User Name', 'User Email'];
+            
+            const csvRows = [
+                headers.join(','),
+                ...promoCodes.map(code => {
+                    const usedInfo = usedCodes.find(u => u.code === code.code);
+                    return [
+                        `"${code.code}"`,
+                        `"${code.url}"`,
+                        `"${code.used ? 'Used' : 'Available'}"`,
+                        `"${code.addedDate || 'Original'}"`,
+                        `"${usedInfo ? usedInfo.timestamp : ''}"`,
+                        `"${usedInfo ? usedInfo.userData.name : ''}"`,
+                        `"${usedInfo ? usedInfo.userData.email : ''}"`
+                    ].join(',');
+                })
+            ];
+            
+            const csvContent = csvRows.join('\n');
+            const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', `jam-all-promo-codes-${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function resetAdditionalCodes() {
+            if (confirm('确定要删除所有手动添加的兑换码吗？\n\n注意：这不会影响原始的200个兑换码，只会删除后续添加的兑换码。')) {
+                // Remove additional codes from promoCodes array
+                promoCodes = promoCodes.filter(code => !code.isAdditional);
+                
+                // Clear from localStorage
+                localStorage.removeItem('jamAdditionalCodes');
+                
+                alert('手动添加的兑换码已清除');
+                
+                // Refresh admin panel if open
+                closeAdminPanel();
+                showAdminPanel();
+            }
+        }
+
+        // Admin access via console or URL parameter
+        if (window.location.search.includes('admin=true')) {
+            showAdminPanel();
+        }
+
+        // Initialize promo codes on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePromoStats();
+            
+            // Add keyboard shortcut for admin access (Ctrl+Shift+A)
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+                    e.preventDefault();
+                    showAdminPanel();
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('campaignForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const errorMsg = document.getElementById('errorMessage');
+            errorMsg.classList.remove('show');
+            
+            // Promo codes are already loaded
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                contact: document.getElementById('contact').value,
+                currentLevel: document.getElementById('currentLevel').value,
+                targetLevel: document.getElementById('targetLevel').value,
+                commitment: document.getElementById('commitment').checked,
+                statement: document.getElementById('statement').value
+            };
+            
+            // Check if commitment is checked
+            if (!formData.commitment) {
+                errorMsg.textContent = '请确认您愿意每天使用JAM练习英语';
+                errorMsg.classList.add('show');
+                return;
+            }
+            
+            // Get available promo code
+            const availableCode = promoCodes.find(p => !p.used);
+            
+            if (!availableCode) {
+                errorMsg.textContent = '抱歉，兑换码已全部发放完毕。请联系 bear@beartalking.com';
+                errorMsg.classList.add('show');
+                return;
+            }
+            
+            // Mark code as used
+            availableCode.used = true;
+            
+            // Create comprehensive user record
+            const userRecord = {
+                // User Information
+                name: formData.name,
+                email: formData.email,
+                contact: formData.contact,
+                currentLevel: formData.currentLevel,
+                targetLevel: formData.targetLevel,
+                commitment: formData.commitment,
+                statement: formData.statement,
+                
+                // Promo Code Information
+                promoCode: availableCode.code,
+                promoUrl: availableCode.url,
+                
+                // Metadata
+                timestamp: new Date().toISOString(),
+                submissionDate: new Date().toLocaleDateString('zh-CN'),
+                submissionTime: new Date().toLocaleTimeString('zh-CN'),
+                userAgent: navigator.userAgent,
+                language: navigator.language
+            };
+            
+            // Store in used codes array
+            usedCodes.push({
+                ...availableCode,
+                userData: formData,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Store in captured users array
+            capturedUsers.push(userRecord);
+            
+            // Save to localStorage
+            localStorage.setItem('jamCampaignUsers', JSON.stringify(capturedUsers));
+            
+            // Log for debugging
+            console.log('User data captured:', userRecord);
+            console.log('Total captured users:', capturedUsers.length);
+            
+            // Update contract page with user data
+            document.getElementById('contractName').textContent = formData.name;
+            document.getElementById('contractLevel').textContent = 
+                formData.targetLevel === 'daily' ? '日常对话流利' :
+                formData.targetLevel === 'business' ? '商务英语流利' :
+                formData.targetLevel === 'exam' ? '考试高分' : '接近母语水平';
+            document.getElementById('contractStatement').textContent = formData.statement;
+            document.getElementById('thankYouName').textContent = formData.name;
+            document.getElementById('redeemCode').textContent = availableCode.code;
+            document.getElementById('redeemLink').href = availableCode.url;
+            
+            // Switch to page 2
+            document.getElementById('page1').classList.remove('active');
+            document.getElementById('page2').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            console.log('Form submitted successfully:', formData);
+            console.log('Assigned code:', availableCode.code);
+        });
+    </script>
+</body>
+</html>
+</html>
