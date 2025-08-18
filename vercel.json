@@ -1,4 +1,6 @@
 {
+  "name": "jam-campaign-website",
+  "version": "1.0.2",
   "rewrites": [
     {
       "source": "/",
@@ -23,5 +25,14 @@
         }
       ]
     }
+  ],
+  "public": true,
+  "functions": {
+    "jam-campaign-site.html": {
+      "maxDuration": 10
+    }
+  },
+  "domains": [
+    "free.jamtalk.co"
   ]
 }
