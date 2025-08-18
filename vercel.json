@@ -1,20 +1,8 @@
 {
-  "version": 2,
-  "name": "jam-campaign-website",
-  "builds": [
+  "rewrites": [
     {
-      "src": "jam-campaign-site.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/jam-campaign-site.html"
-    },
-    {
-      "src": "/index.html",
-      "dest": "/jam-campaign-site.html"
+      "source": "/",
+      "destination": "/jam-campaign-site.html"
     }
   ],
   "headers": [
