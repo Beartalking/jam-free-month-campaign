@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAM - 每天1分钟提升英语口语</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyMCBRMTYgMTYgMjAgMTYgTDQ0IDE2IFE0OCAxNiA0OCAyMCBMNDggMzYgUTQ4IDQwIDQ0IDQwIEwzMiA0MCBMMJICA0OCAzMiA0MCBMJDAGNDAGIJQMTYGNDAMTYGNDAJWII0ZmlsbD0iIzAxNDdGRSIvPgo8dGV4dCB4PSIzMiIgeT0iMzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBzdHlsZT0iZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDkwMDsgZm9udC1zaXplOiAxNHB4OyI+SkFNITwvdGV4dD4KPHN2Zz4K">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iNDAiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik00MCA1NSBRNDAgNDUgNTAgNDUgTDEzMCA0NSBRMTQwIDQ1IDE0MCA1NSBMMTQWIDA5NTBRMTQWIDA1NJEMTNBIDA1IEw5MCGRMJUMA8GyAMTM1IEM5MCGRMJUBA4MCEA1IFE0MQEWIDTAIDUNINTAgNDV6IiBmaWxsPSIjMDE0N0ZFIi8+Cjx0ZXh0IHg9IjkwIiB5PSI5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIHN0eWxlPSJmb250LWZhbWlseTogLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogOTAwOyBmb250LXNpemU6IDM2cHg7Ij5KQU0hPC90ZXh0Pgo8L3N2Zz4K">
+    <meta name="theme-color" content="#0147FE">
     <style>
         * {
             margin: 0;
@@ -380,86 +385,7 @@
             box-shadow: 6px 6px 0 #1A1A1A;
         }
 
-        /* QR codes section */
-        .qr-section {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 40px;
-        }
 
-        .qr-box {
-            background: white;
-            border: 3px solid #1A1A1A;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 4px 4px 0 #1A1A1A;
-        }
-
-        .qr-placeholder {
-            width: 120px;
-            height: 120px;
-            background: #F9FAF8;
-            border: 2px solid #1A1A1A;
-            border-radius: 8px;
-            margin: 0 auto 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .qr-placeholder::after {
-            content: "QR Code";
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 10px;
-            font-weight: 600;
-            color: #5C5C5C;
-        }
-
-        .qr-label {
-            font-weight: 700;
-            color: #1A1A1A;
-        }
-
-        .qr-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 10px;
-        }
-
-        .qr-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .avatar-placeholder {
-            width: 40px;
-            height: 40px;
-            background: #F9FAF8;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .qr-code-display {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #F9FAF8;
-            border-radius: 8px;
-            padding: 10px;
-        }
 
         /* Error message */
         .error-message {
@@ -530,11 +456,7 @@
 
 
             
-            .qr-section {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
+
 
             .form-container, .description, .contract-box, .redeem-section {
                 padding: 20px;
@@ -601,7 +523,7 @@
             </div>
 
             <div class="description">
-                <h2>今天聊什么？<span style="color: #FF3B30; font-weight: 800; margin-left: 20px;">免费领取1个月会员</span></h2>
+                <h2>FREE: <span style="color: #FF3B30; font-weight: 800; margin-left: 20px;">免费领取1个月会员</span></h2>
                 <p>说明：填写完下面的信息，您即可获取：JaM 随身口语教练一个月的免费邀请码，解锁您提升英语口语的能力。</p>
                 <p>也欢迎将这个表格分享给您的朋友和家人</p>
             </div>
@@ -612,7 +534,7 @@
                 <form id="campaignForm">
                     <div class="form-group">
                         <label for="name">如何称呼您</label>
-                        <input type="text" id="name" name="name" required placeholder="{{name}}">
+                        <input type="text" id="name" name="name" required placeholder="您的姓名或昵称">
                     </div>
 
                     <div class="form-group">
@@ -714,148 +636,17 @@
                 bear@beartalking.com 直接与创始人Bear联系。
             </p>
 
-            <p style="text-align: center; margin-bottom: 30px; color: #5C5C5C;">
-                如果您习惯用微信或是Whatsapp，也可以扫码加入JAM用户群。
-            </p>
 
-            <div class="qr-section">
-                <div class="qr-box">
-                    <div class="qr-card">
-                        <div class="qr-header">
-                            <div class="avatar-placeholder">
-                                <svg width="24" height="24" viewBox="0 0 24 24">
-                                    <circle cx="12" cy="8" r="3" fill="#5C5C5C"/>
-                                    <path d="M12 14c-4 0-7 2-7 4v2h14v-2c0-2-3-4-7-4z" fill="#5C5C5C"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div style="font-weight: bold; font-size: 16px;">Group: JAM 用户群</div>
-                            </div>
-                        </div>
-                        <div class="qr-code-display">
-                            <!-- WeChat QR Code Pattern -->
-                            <svg width="200" height="200" viewBox="0 0 200 200">
-                                <!-- Corner markers -->
-                                <rect x="10" y="10" width="30" height="30" fill="#1A1A1A"/>
-                                <rect x="15" y="15" width="20" height="20" fill="white"/>
-                                <rect x="20" y="20" width="10" height="10" fill="#1A1A1A"/>
-                                
-                                <rect x="160" y="10" width="30" height="30" fill="#1A1A1A"/>
-                                <rect x="165" y="15" width="20" height="20" fill="white"/>
-                                <rect x="170" y="20" width="10" height="10" fill="#1A1A1A"/>
-                                
-                                <rect x="10" y="160" width="30" height="30" fill="#1A1A1A"/>
-                                <rect x="15" y="165" width="20" height="20" fill="white"/>
-                                <rect x="20" y="170" width="10" height="10" fill="#1A1A1A"/>
-                                
-                                <!-- WeChat icon in center -->
-                                <g transform="translate(85, 85)">
-                                    <rect width="30" height="30" rx="8" fill="#1A1A1A"/>
-                                    <g transform="translate(5, 7)">
-                                        <!-- WeChat bubble icons -->
-                                        <circle cx="7" cy="7" r="6" fill="white"/>
-                                        <circle cx="13" cy="11" r="4" fill="white"/>
-                                    </g>
-                                </g>
-                                
-                                <!-- Data pattern simulation -->
-                                <rect x="50" y="20" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="60" y="20" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="70" y="25" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="50" y="30" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="65" y="35" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="80" y="30" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="90" y="35" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="140" y="25" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="150" y="30" width="3" height="3" fill="#1A1A1A"/>
-                                <!-- Add more data points for realism -->
-                                <rect x="25" y="50" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="35" y="55" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="45" y="60" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="125" y="50" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="135" y="55" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="145" y="60" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="50" y="125" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="60" y="135" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="70" y="145" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="120" y="125" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="130" y="135" width="3" height="3" fill="#1A1A1A"/>
-                                <rect x="140" y="145" width="3" height="3" fill="#1A1A1A"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="qr-label">微信群二维码</div>
-                </div>
-                
-                <div class="qr-box">
-                    <div class="qr-card" style="background: #61BA47;">
-                        <div class="qr-header">
-                            <div class="avatar-placeholder" style="background: rgba(255,255,255,0.9); border-radius: 50%;">
-                                <svg width="24" height="24" viewBox="0 0 24 24">
-                                    <circle cx="12" cy="8" r="3" fill="#61BA47"/>
-                                    <path d="M12 14c-4 0-7 2-7 4v2h14v-2c0-2-3-4-7-4z" fill="#61BA47"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <div style="font-weight: bold; font-size: 16px; color: white;">JAM 用户群</div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.8);">WhatsApp group</div>
-                            </div>
-                        </div>
-                        <div class="qr-code-display" style="background: white; border-radius: 8px; padding: 10px;">
-                            <!-- WhatsApp QR Code Pattern -->
-                            <svg width="200" height="200" viewBox="0 0 200 200">
-                                <!-- Corner markers -->
-                                <rect x="10" y="10" width="30" height="30" fill="#61BA47"/>
-                                <rect x="15" y="15" width="20" height="20" fill="white"/>
-                                <rect x="20" y="20" width="10" height="10" fill="#61BA47"/>
-                                
-                                <rect x="160" y="10" width="30" height="30" fill="#61BA47"/>
-                                <rect x="165" y="15" width="20" height="20" fill="white"/>
-                                <rect x="170" y="20" width="10" height="10" fill="#61BA47"/>
-                                
-                                <rect x="10" y="160" width="30" height="30" fill="#61BA47"/>
-                                <rect x="15" y="165" width="20" height="20" fill="white"/>
-                                <rect x="20" y="170" width="10" height="10" fill="#61BA47"/>
-                                
-                                <!-- WhatsApp icon in center -->
-                                <g transform="translate(80, 80)">
-                                    <circle cx="20" cy="20" r="18" fill="#61BA47"/>
-                                    <path d="M20 6c-7.7 0-14 6.3-14 14 0 2.5 0.7 4.9 1.9 7l-2 6 6.1-1.9c2 1.1 4.3 1.7 6.8 1.7 7.7 0 14-6.3 14-14S27.7 6 20 6z" fill="white"/>
-                                    <!-- Phone icon -->
-                                    <path d="M25.2 22.2c-0.4 0.4-0.9 0.6-1.4 0.6-3.1 0-6.1-1.2-8.4-3.5s-3.5-5.3-3.5-8.4c0-0.5 0.2-1 0.6-1.4l1.4-1.4c0.4-0.4 1-0.4 1.4 0l2.1 2.1c0.4 0.4 0.4 1 0 1.4l-0.7 0.7c0.7 1.2 1.7 2.2 2.9 2.9l0.7-0.7c0.4-0.4 1-0.4 1.4 0l2.1 2.1c0.4 0.4 0.4 1 0 1.4l-1.4 1.4z" fill="#61BA47"/>
-                                </g>
-                                
-                                <!-- Data pattern simulation -->
-                                <rect x="50" y="20" width="3" height="3" fill="#61BA47"/>
-                                <rect x="60" y="20" width="3" height="3" fill="#61BA47"/>
-                                <rect x="70" y="25" width="3" height="3" fill="#61BA47"/>
-                                <rect x="50" y="30" width="3" height="3" fill="#61BA47"/>
-                                <rect x="65" y="35" width="3" height="3" fill="#61BA47"/>
-                                <rect x="140" y="25" width="3" height="3" fill="#61BA47"/>
-                                <rect x="150" y="30" width="3" height="3" fill="#61BA47"/>
-                                <rect x="25" y="50" width="3" height="3" fill="#61BA47"/>
-                                <rect x="35" y="55" width="3" height="3" fill="#61BA47"/>
-                                <rect x="45" y="60" width="3" height="3" fill="#61BA47"/>
-                                <rect x="125" y="50" width="3" height="3" fill="#61BA47"/>
-                                <rect x="135" y="55" width="3" height="3" fill="#61BA47"/>
-                                <rect x="145" y="60" width="3" height="3" fill="#61BA47"/>
-                                <rect x="50" y="125" width="3" height="3" fill="#61BA47"/>
-                                <rect x="60" y="135" width="3" height="3" fill="#61BA47"/>
-                                <rect x="70" y="145" width="3" height="3" fill="#61BA47"/>
-                                <rect x="120" y="125" width="3" height="3" fill="#61BA47"/>
-                                <rect x="130" y="135" width="3" height="3" fill="#61BA47"/>
-                                <rect x="140" y="145" width="3" height="3" fill="#61BA47"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="qr-label">Whatsapp群二维码</div>
-                </div>
-            </div>
 
             <!-- Footer -->
             <div style="text-align: center; margin-top: 40px; padding: 20px; color: #5C5C5C; font-size: 14px; border-top: 2px solid #E5E5E5;">
                 <p style="margin-bottom: 10px;">Jamtalk.co, all right reserved.</p>
-                <p><a href="#" style="color: #0147FE; text-decoration: none; font-weight: 600;">Download the app (link)</a></p>
+                <p>
+                    <a href="https://apps.apple.com/us/app/jam-ai-speaking-coach/id6749299926" 
+                       style="color: #0147FE; text-decoration: none; font-weight: 600;">
+                       Download the JAM app
+                    </a>
+                  </p>
             </div>
         </div>
     </div>
