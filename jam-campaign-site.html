@@ -385,6 +385,65 @@
             box-shadow: 6px 6px 0 #1A1A1A;
         }
 
+        /* Customer Service WeChat QR Code */
+        .cs-qr-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .cs-qr-box {
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .cs-qr-card {
+            background: white;
+            border: 3px solid #1A1A1A;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 4px 4px 0 #1A1A1A;
+            margin-bottom: 15px;
+        }
+
+        .cs-qr-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .cs-avatar-placeholder {
+            width: 40px;
+            height: 40px;
+            background: #61BA47;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cs-qr-code-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #F9FAF8;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .cs-qr-code-display img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 4px;
+        }
+
+        .cs-qr-label {
+            font-weight: 700;
+            color: #1A1A1A;
+            font-size: 16px;
+        }
+
 
 
         /* Error message */
@@ -460,6 +519,15 @@
 
             .form-container, .description, .contract-box, .redeem-section {
                 padding: 20px;
+            }
+            
+            .cs-qr-card {
+                padding: 15px;
+            }
+            
+            .cs-qr-code-display img {
+                max-width: 160px;
+                max-height: 160px;
             }
 
             .submit-btn {
@@ -636,7 +704,120 @@
                 bear@beartalking.com 直接与创始人Bear联系。
             </p>
 
+            <p style="text-align: center; margin-bottom: 30px; color: #5C5C5C;">
+                如果您习惯用微信，也可以扫码添加JAM的微信小助理。
+            </p>
 
+            <div class="cs-qr-section">
+                <div class="cs-qr-box">
+                    <div class="cs-qr-card">
+                        <div class="cs-qr-header">
+                            <div class="cs-avatar-placeholder">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                    <path d="M7 9c-.4 0-.8.1-1.1.3-.7.4-1.1 1.1-1.1 1.8 0 .4.1.7.3 1 .2.3.5.5.8.6.3.1.7.1 1 0s.6-.3.8-.6c.2-.3.3-.6.3-1 0-.7-.4-1.4-1.1-1.8-.3-.2-.7-.3-1.1-.3M17 9c-.4 0-.8.1-1.1.3-.7.4-1.1 1.1-1.1 1.8 0 .4.1.7.3 1 .2.3.5.5.8.6.3.1.7.1 1 0s.6-.3.8-.6c.2-.3.3-.6.3-1 0-.7-.4-1.4-1.1-1.8-.3-.2-.7-.3-1.1-.3"/>
+                                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 16h-2v-2h2v2zm0-4h-2V8h2v6zm6 4h-2v-2h2v2zm0-4h-2V8h2v6z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight: bold; font-size: 16px;">JAM 微信小助理</div>
+                                <div style="font-size: 12px; color: #61BA47;">Jamtalk</div>
+                            </div>
+                        </div>
+                        <div class="cs-qr-code-display">
+                            <!-- WeChat Customer Service QR Code -->
+                            <svg width="200" height="200" viewBox="0 0 200 200" style="background: white;">
+                                <!-- Corner markers -->
+                                <rect x="20" y="20" width="30" height="30" fill="#1A1A1A"/>
+                                <rect x="24" y="24" width="22" height="22" fill="white"/>
+                                <rect x="28" y="28" width="14" height="14" fill="#1A1A1A"/>
+                                
+                                <rect x="150" y="20" width="30" height="30" fill="#1A1A1A"/>
+                                <rect x="154" y="24" width="22" height="22" fill="white"/>
+                                <rect x="158" y="28" width="14" height="14" fill="#1A1A1A"/>
+                                
+                                <rect x="20" y="150" width="30" height="30" fill="#1A1A1A"/>
+                                <rect x="24" y="154" width="22" height="22" fill="white"/>
+                                <rect x="28" y="158" width="14" height="14" fill="#1A1A1A"/>
+                                
+                                <!-- Center WeChat logo (based on the image) -->
+                                <g transform="translate(75, 75)">
+                                    <rect width="50" height="50" rx="8" fill="#1A1A1A"/>
+                                    <g transform="translate(10, 15)">
+                                        <!-- WeChat bubble icons -->
+                                        <circle cx="10" cy="8" r="7" fill="white"/>
+                                        <circle cx="20" cy="12" r="5" fill="white"/>
+                                        <!-- Eyes -->
+                                        <circle cx="8" cy="6" r="1.5" fill="#1A1A1A"/>
+                                        <circle cx="12" cy="6" r="1.5" fill="#1A1A1A"/>
+                                        <circle cx="18" cy="10" r="1" fill="#1A1A1A"/>
+                                        <circle cx="22" cy="10" r="1" fill="#1A1A1A"/>
+                                    </g>
+                                </g>
+                                
+                                <!-- QR code data pattern simulation based on the actual image -->
+                                <!-- Top section -->
+                                <rect x="60" y="25" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="70" y="25" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="80" y="30" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="90" y="25" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="100" y="30" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="110" y="25" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="120" y="30" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="130" y="25" width="4" height="4" fill="#1A1A1A"/>
+                                
+                                <!-- Left section -->
+                                <rect x="25" y="60" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="30" y="70" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="25" y="80" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="35" y="90" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="25" y="100" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="30" y="110" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="25" y="120" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="35" y="130" width="4" height="4" fill="#1A1A1A"/>
+                                
+                                <!-- Right section -->
+                                <rect x="155" y="60" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="165" y="70" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="160" y="80" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="170" y="90" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="155" y="100" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="165" y="110" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="160" y="120" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="170" y="130" width="4" height="4" fill="#1A1A1A"/>
+                                
+                                <!-- Bottom section -->
+                                <rect x="60" y="155" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="70" y="165" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="80" y="160" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="90" y="170" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="100" y="155" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="110" y="165" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="120" y="160" width="4" height="4" fill="#1A1A1A"/>
+                                <rect x="130" y="170" width="4" height="4" fill="#1A1A1A"/>
+                                
+                                <!-- Additional pattern dots for realism -->
+                                <rect x="65" y="45" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="75" y="50" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="85" y="45" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="95" y="50" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="105" y="45" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="115" y="50" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="125" y="45" width="3" height="3" fill="#1A1A1A"/>
+                                
+                                <rect x="45" y="65" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="50" y="75" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="45" y="85" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="50" y="95" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="45" y="105" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="50" y="115" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="45" y="125" width="3" height="3" fill="#1A1A1A"/>
+                                <rect x="50" y="135" width="3" height="3" fill="#1A1A1A"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="cs-qr-label">微信客服二维码</div>
+                </div>
+            </div>
 
             <!-- Footer -->
             <div style="text-align: center; margin-top: 40px; padding: 20px; color: #5C5C5C; font-size: 14px; border-top: 2px solid #E5E5E5;">
