@@ -1,104 +1,109 @@
-# JAM Campaign Website
+# JAM Campaign Website 🎯
 
-A promotional campaign website for JAM - AI-powered English speaking coach app.
+A modern, neural brutalist campaign website for JAM's free one-month pro membership promotion.
 
-## 🎯 Overview
+## 🌟 Features
 
-This campaign website allows users to:
-- Fill out a form with their English learning goals
-- Receive a free 1-month JAM Pro redemption code
-- Join WeChat/WhatsApp user groups via QR codes
+### Core Functionality
+- **Two-Page Campaign Flow**: Form submission → Contract & redemption
+- **Promo Code Management**: 200 initial codes with dynamic addition capability
+- **User Data Capture**: Complete form data with CSV export functionality
+- **Custom Hero Banners**: Upload and manage campaign visuals via admin panel
 
-## 📁 Project Structure
+### Admin Panel Features
+- **Password Protected**: Access via `?admin=true` or `Ctrl+Shift+A`
+- **User Analytics**: View submission stats and export user data
+- **Code Management**: Add single/bulk promo codes, export all codes
+- **Visual Management**: Upload custom hero banners with auto-optimization
+- **Data Export**: CSV downloads for users and promo codes
 
-```
-├── jam-campaign-site.html          # Main campaign website
-├── JAM - promo code管理 - Sheet2.csv  # Promo codes database
-├── README.md                        # This file
-└── .gitignore                      # Git ignore rules
-```
+### Technical Highlights
+- **Single File Architecture**: Complete website in one HTML file
+- **Client-Side Storage**: localStorage for persistent data and settings
+- **Image Processing**: Canvas API for banner optimization and compression
+- **Responsive Design**: Mobile-first approach with neural brutalist styling
+- **Form Validation**: Complete input validation with user feedback
 
-## ✨ Features
+## 🎨 Design
 
-### User Experience
-- **Neural Brutalist Design** - Matches JAM app's visual style
-- **Two-Page Flow** - Form submission → Success with redemption code
-- **Mobile Responsive** - Works on all devices
-- **Chinese Language** - Simplified Chinese interface
-- **Animated Confetti** - Celebration effects on success page
-
-### Admin Features
-- **User Data Capture** - Automatic form submission tracking
-- **CSV Export** - Download user data and promo code usage
-- **Promo Code Management** - Add new codes via admin panel
-- **Real-time Statistics** - Usage tracking and analytics
-
-### Technical Features
-- **200+ Promo Codes** - Pre-loaded redemption codes
-- **Local Storage** - Browser-based data persistence
-- **Automatic URL Generation** - App Store links for new codes
-- **Data Validation** - Form and code format validation
-
-## 🔧 Admin Access
-
-### Methods to Access Admin Panel:
-1. **URL Parameter**: `?admin=true`
-2. **Keyboard Shortcut**: `Ctrl+Shift+A`
-3. **Console Command**: `showAdminPanel()`
-
-**Admin Password**: `jam2025admin`
-
-### Admin Functions:
-- 📊 Export user data to CSV
-- ➕ Add single promo codes
-- 📝 Bulk import promo codes  
-- 📋 Export all promo codes
-- 🗑️ Clear user data
-- 🔄 Reset additional codes
+**Style**: Neural Brutalist with JAM brand colors
+- **Primary**: #FFCC00 (Yellow)
+- **Accent**: #0147FE (Blue), #FF3B30 (Red)
+- **Typography**: Bold, modern system fonts
+- **Layout**: Card-based with strong borders and shadows
 
 ## 🚀 Deployment
 
-1. Upload `jam-campaign-site.html` to any web server
-2. Ensure the CSV file is in the same directory (for reference)
-3. Share the website URL with your audience
+### Local Development
+```bash
+# Serve locally
+python3 -m http.server 8000
+# Visit: http://localhost:8000
+```
 
-## 📊 Data Management
+### Production Deployment
+- **Hosting**: Vercel (recommended)
+- **Domain**: Custom domain support
+- **SSL**: Automatic HTTPS
+- **CDN**: Global content delivery
 
-### User Data Captured:
-- Name, Email, Contact info
-- Current & Target English levels
+## 🔧 Admin Panel
+
+**Access**: Add `?admin=true` to URL or press `Ctrl+Shift+A`
+**Password**: `jam2025admin`
+
+### Admin Features:
+- 📊 **Dashboard**: User stats, code usage analytics
+- 👥 **User Management**: Export user data to CSV
+- 🎫 **Code Management**: Add/export promo codes
+- 🖼️ **Visual Management**: Upload custom hero banners
+- 🗑️ **Data Management**: Clear data, reset codes
+
+## 📱 Campaign Features
+
+### Form Fields
+- Name, email, contact (phone/WeChat)
+- Current & target English levels
 - Daily practice commitment
 - Personal motivation statement
-- Assigned promo code & timestamp
-- Browser metadata
 
-### Export Formats:
-- **User Data CSV**: Complete form submissions
-- **Promo Codes CSV**: Usage tracking and status
+### Redemption Experience
+- Personalized contract with user data
+- One-click App Store redemption
+- QR codes for WeChat/WhatsApp groups
+- Confetti celebration effects
 
-## 🎨 Design System
+## 🛠️ Technical Stack
 
-### Colors:
-- **Primary Blue**: #0147FE (JAM brand color)
-- **Accent Yellow**: #FFCC00 (Highlights)
-- **Success Green**: #61BA47 (Success states)
-- **Error Red**: #FF3B30 (Error states)
-- **Neutral Gray**: #5C5C5C (Text)
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Storage**: Browser localStorage
+- **Image Processing**: Canvas API
+- **Export**: Blob API for CSV generation
+- **Styling**: Custom CSS with neural brutalist design
 
-### Typography:
-- **Font Family**: -apple-system, BlinkMacSystemFont, sans-serif
-- **Weights**: 400 (regular), 600 (medium), 700 (bold), 900 (black)
+## 📦 File Structure
+
+```
+jam-campaign-site.html          # Complete website (1,500+ lines)
+JAM - promo code管理 - Sheet2.csv  # Initial promo codes
+README.md                       # This documentation
+.gitignore                      # Git ignore rules
+```
 
 ## 🔄 Version History
 
-- **Build 1** (2025-01-08): Initial release with full campaign functionality
+- **build-1**: Initial release with core campaign functionality
+- **build-1.0.1**: Added custom hero banner upload feature
+- **latest**: Removed watermark, improved image display
 
-## 📞 Support
+## 📄 License
 
-For technical issues or questions:
-- **Email**: bear@beartalking.com
-- **Website**: Jamtalk.co
+All rights reserved - Jamtalk.co
+
+## 🤝 Support
+
+For technical support or questions about the campaign, contact the development team.
 
 ---
 
-Built with ❤️ for JAM English Learning Community
+**Built with ❤️ for JAM - Your AI-powered English speaking coach**

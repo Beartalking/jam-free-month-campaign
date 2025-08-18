@@ -1,0 +1,17 @@
+# Vercel ignore file
+.git/
+node_modules/
+.DS_Store
+*.log
+.env*
+
+# Development files
+.vscode/
+.idea/
+
+# Backup files
+*.bak
+*.tmp
+
+# OS generated files
+Thumbs.db
