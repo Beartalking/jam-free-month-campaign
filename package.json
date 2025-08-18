@@ -1,0 +1,19 @@
+{
+  "name": "jam-free-month-campaign",
+  "version": "1.0.1",
+  "description": "JAM App Free Month Campaign Website",
+  "main": "jam-campaign-site.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "jam",
+    "english",
+    "campaign",
+    "static-site",
+    "vercel"
+  ],
+  "author": "JAM Team",
+  "license": "MIT"
+}
