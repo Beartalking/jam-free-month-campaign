@@ -66,9 +66,6 @@
             position: relative;
             overflow: hidden;
             box-shadow: 8px 8px 0 #1A1A1A;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             min-height: 200px;
             display: flex;
             flex-direction: column;
@@ -77,18 +74,25 @@
         }
 
         .hero.has-custom-bg {
-            background-blend-mode: overlay;
+            padding: 0;
+            background: none;
         }
 
-        .hero.has-custom-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 204, 0, 0.8);
-            z-index: 1;
+        .hero-custom-image {
+            display: none;
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .hero.has-custom-bg .hero-custom-image {
+            display: block;
+        }
+
+        .hero.has-custom-bg .hero-default-content {
+            display: none;
         }
 
         .hero::before {
@@ -566,38 +570,44 @@
                 </div>
             </div>
             <div class="hero">
-                <div class="hero-image">
-                    <svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom: 20px;">
-                        <!-- App icon rounded square background -->
-                        <defs>
-                            <style>
-                                .jam-logo-text { 
-                                    font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
-                                    font-weight: 900; 
-                                    font-size: 24px; 
-                                    letter-spacing: -1px;
-                                }
-                            </style>
-                        </defs>
-                        
-                        <!-- Rounded square app icon background -->
-                        <rect x="5" y="5" width="110" height="110" rx="26" ry="26" fill="white" stroke="#E5E5E5" stroke-width="1"/>
-                        
-                        <!-- Speech bubble with proper proportions -->
-                        <path d="M25 35 Q25 28 32 28 L88 28 Q95 28 95 35 L95 65 Q95 72 88 72 L50 72 L35 85 L50 72 L32 72 Q25 72 25 65 Z" 
-                              fill="#0147FE"/>
-                        
-                        <!-- JAM! text -->
-                        <text x="60" y="58" text-anchor="middle" fill="white" class="jam-logo-text">JAM!</text>
-                        
-                        <!-- Small decorative elements for the tail -->
-                        <circle cx="40" cy="80" r="1.5" fill="#0147FE"/>
-                        <circle cx="45" cy="83" r="1" fill="#0147FE"/>
-                    </svg>
-                </div>
-                <div class="hero-content">
-                    <h1>Jam</h1>
-                    <p>每天1分钟，提升英语口语</p>
+                <!-- Custom Image (hidden by default) -->
+                <img class="hero-custom-image" alt="Custom Hero Banner" />
+                
+                <!-- Default Content (shown by default) -->
+                <div class="hero-default-content">
+                    <div class="hero-image">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom: 20px;">
+                            <!-- App icon rounded square background -->
+                            <defs>
+                                <style>
+                                    .jam-logo-text { 
+                                        font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+                                        font-weight: 900; 
+                                        font-size: 24px; 
+                                        letter-spacing: -1px;
+                                    }
+                                </style>
+                            </defs>
+                            
+                            <!-- Rounded square app icon background -->
+                            <rect x="5" y="5" width="110" height="110" rx="26" ry="26" fill="white" stroke="#E5E5E5" stroke-width="1"/>
+                            
+                            <!-- Speech bubble with proper proportions -->
+                            <path d="M25 35 Q25 28 32 28 L88 28 Q95 28 95 35 L95 65 Q95 72 88 72 L50 72 L35 85 L50 72 L32 72 Q25 72 25 65 Z" 
+                                  fill="#0147FE"/>
+                            
+                            <!-- JAM! text -->
+                            <text x="60" y="58" text-anchor="middle" fill="white" class="jam-logo-text">JAM!</text>
+                            
+                            <!-- Small decorative elements for the tail -->
+                            <circle cx="40" cy="80" r="1.5" fill="#0147FE"/>
+                            <circle cx="45" cy="83" r="1" fill="#0147FE"/>
+                        </svg>
+                    </div>
+                    <div class="hero-content">
+                        <h1>Jam</h1>
+                        <p>每天1分钟，提升英语口语</p>
+                    </div>
                 </div>
             </div>
 
@@ -1292,8 +1302,10 @@
 
         function applyCustomHeroBanner() {
             const heroSection = document.querySelector('.hero');
-            if (customHeroBanner && heroSection) {
-                heroSection.style.backgroundImage = `url(${customHeroBanner})`;
+            const customImage = document.querySelector('.hero-custom-image');
+            
+            if (customHeroBanner && heroSection && customImage) {
+                customImage.src = customHeroBanner;
                 heroSection.classList.add('has-custom-bg');
             }
         }
@@ -1304,9 +1316,14 @@
                 customHeroBanner = null;
                 
                 const heroSection = document.querySelector('.hero');
+                const customImage = document.querySelector('.hero-custom-image');
+                
                 if (heroSection) {
-                    heroSection.style.backgroundImage = '';
                     heroSection.classList.remove('has-custom-bg');
+                }
+                
+                if (customImage) {
+                    customImage.src = '';
                 }
                 
                 alert('已恢复默认英雄横幅');
