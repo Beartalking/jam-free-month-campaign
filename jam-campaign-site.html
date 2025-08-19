@@ -61,27 +61,8 @@
             }
         }
 
-        /* Hero section */
+        /* Hero section - Simplified */
         .hero {
-            background: #FFCC00;
-            border: 4px solid #1A1A1A;
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 8px 8px 0 #1A1A1A;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Override yellow background when custom image is shown */
-        .hero.has-custom-bg {
-            padding: 0 !important;
-            background: transparent !important;
             border: 4px solid #1A1A1A;
             border-radius: 20px;
             margin-bottom: 30px;
@@ -93,54 +74,12 @@
         }
 
         .hero-custom-image {
-            display: block !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
+            width: 100%;
+            height: 100%;
             min-height: 300px;
             object-fit: cover;
-            border-radius: 20px;
-            z-index: 1;
-        }
-
-        .hero.has-custom-bg .hero-custom-image {
-            display: block !important;
-        }
-
-        .hero.has-custom-bg .hero-default-content {
-            display: none !important;
-        }
-
-        /* Ensure default content is hidden when custom image is shown */
-        .hero-default-content {
-            display: none !important;
-        }
-
-        .hero-image {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            letter-spacing: -2px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            font-weight: 500;
+            border-radius: 16px;
+            display: block;
         }
 
         /* Description section */
@@ -572,47 +511,10 @@
                     <div class="step"></div>
                 </div>
             </div>
-            <div class="hero has-custom-bg">
-                <!-- Custom Image (now shown by default) -->
+            <div class="hero">
+                <!-- Custom Hero Image - Direct Display -->
                 <img class="hero-custom-image" alt="JAM Personal Speaking Coach" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDYwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjQjNEQ0ZGIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSI0MCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTgwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSIzMDAiIGN5PSI5MCIgcj0iMjUiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjQwMCIgY3k9IjEwMCIgcj0iMzUiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjUwMCIgY3k9IjcwIiByPSIyMCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTAgMjAwIEw2MDAgMjAwIEw2MDAgMzAwIEwwIDMwMCBaIiBmaWxsPSIjOTlDQzMzIi8+CjxwYXRoIGQ9Ik0wIDIwMCBRMTUwIDE4MCAzMDAgMjAwIFE0NTAgMjIwIDYwMCAyMDAiIGZpbGw9IiM5OENDMzMiLz4KPHJlY3QgeD0iNDAiIHk9IjE2MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI0Y0QjM3NyIvPgo8Y2lyY2xlIGN4PSI4MCIgY3k9IjE4MCIgcj0iMjAiIGZpbGw9IiMzMzMiLz4KPHBhdGggZD0iTTYwIDE5MCBRNjAgMTgwIDcwIDE4MCBMOTAgMTgwIFE5MCAxOTAgODAgMTkwIiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik02NSAxOTUgTDc1IDE5NSBNNzAgMTkwIEw3MCAyMDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0xMDAgMTgwIEwxMDAgMjAwIEw4MCAyMDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjE5MCIgcj0iNSIgZmlsbD0iIzMzMyIvPgo8cGF0aCBkPSJNNDAwIDE2MCBRNDAwIDE1MCA0MTAgMTUwIEw0OTAgMTUwIFE1MDAgMTUwIDUwMCAxNjAiIGZpbGw9IiNGRkNDMDAiLz4KPHJlY3QgeD0iNDEwIHk9MTUwIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMDAiIHJ4PSIxMCIvPgo8Y2lyY2xlIGN4PSI0NTAgY3k9MTgwIHI9IjEwIiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik00NDAgMTkwIFE0NDAgMTgwIDQ1MCAxODAgTDUwMCAxODAgUTUwMCAxOTAgNDUwIDE5MCIgZmlsbD0iIzMzMyIvPgo8cGF0aCBkPSJNNDQ1IDE5NSBMNDU1IDE5NSBNNDUwIDE5MCBMNDUwIDIwMCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTQ4MCAxODAgTDQ4MCAyMDAgTDQ2MCAyMDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxjaXJjbGUgY3g9IjQ4MCIgY3k9IjE5MCIgcj0iMyIgZmlsbD0iIzMzMyIvPgo8cGF0aCBkPSJNMzAwIDEwMCBRMzAwIDkwIDMxMCA5MCBMMzQwIDkwIFEzNTAgOTAgMzUwIDEwMCIgZmlsbD0iIzAxNDdGRSIvPgo8dGV4dCB4PSIzMjUiIHk9IjExMCIgdGV4dC1hbmNob3I9Im1pZGRkbGUiIGZpbGw9IndoaXRlIiBzdHlsZT0iZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDkwMDsgZm9udC1zaXplOiAyNHB4OyI+SkFNITwvdGV4dD4KPHRleHQgeD0iMzAwIiB5PSIyNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMTQ3RkUiIHN0eWxlPSJmb250LWZhbWlseTogLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogNzAwOyBmb250LXNpemU6IDI0cHg7Ij7kupLlmajkuIDkuKrmtYvor5U8L3RleHQ+Cjwvc3ZnPgo=" />
-            
-            <!-- Default Content (now hidden by default) -->
-            <div class="hero-default-content" style="display: none;">
-                <div class="hero-image">
-                    <svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom: 20px;">
-                        <!-- App icon rounded square background -->
-                        <defs>
-                            <style>
-                                .jam-logo-text { 
-                                    font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
-                                    font-weight: 900; 
-                                    font-size: 24px; 
-                                    letter-spacing: -1px;
-                                }
-                            </style>
-                        </defs>
-                        
-                        <!-- Rounded square app icon background -->
-                        <rect x="5" y="5" width="110" height="110" rx="26" ry="26" fill="white" stroke="#E5E5E5" stroke-width="1"/>
-                        
-                        <!-- Speech bubble with proper proportions -->
-                        <path d="M25 35 Q25 28 32 28 L88 28 Q95 28 95 35 L95 65 Q95 72 88 72 L50 72 L35 85 L50 72 L32 72 Q25 72 25 65 Z" 
-                              fill="#0147FE"/>
-                        
-                        <!-- JAM! text -->
-                        <text x="60" y="58" text-anchor="middle" fill="white" class="jam-logo-text">JAM!</text>
-                        
-                        <!-- Small decorative elements for the tail -->
-                        <circle cx="40" cy="80" r="1.5" fill="#0147FE"/>
-                        <circle cx="45" cy="83" r="1" fill="#0147FE"/>
-                    </svg>
-                </div>
-                <div class="hero-content">
-                    <h1>Jam</h1>
-                    <p>每天1分钟，提升英语口语</p>
-                </div>
             </div>
-        </div>
 
             <div class="description">
                 <h2>FREE: <span style="color: #FF3B30; font-weight: 800; margin-left: 20px;">免费领取1个月会员</span></h2>
@@ -804,7 +706,7 @@
         promoCodes = [...PROMO_CODES, ...additionalCodes];
         
         // Hero banner management
-        let customHeroBanner = localStorage.getItem('jamCustomHeroBanner');
+
         
         // WeChat QR code management
         let customWeChatQR = localStorage.getItem('jamCustomWeChatQR');
@@ -905,17 +807,7 @@
                         <div style="margin: 20px 0;">
                             <h3>活动视觉管理</h3>
                             
-                            <!-- Hero Banner Section -->
-                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                                <h4 style="margin: 0 0 10px 0; color: #333; font-size: 14px;">英雄横幅</h4>
-                                <p style="margin: 0 0 10px 0; color: #666; font-size: 13px;">
-                                    当前横幅状态: <strong style="color: ${customHeroBanner ? '#61BA47' : '#FF9500'};">${customHeroBanner ? '自定义图片' : '默认设计'}</strong>
-                                </p>
-                                <button onclick="uploadHeroBanner()" style="background: #0147FE; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">🖼️ 上传英雄横幅</button>
-                                <button onclick="previewCurrentBanner()" style="background: #5C5C5C; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">👁️ 预览当前横幅</button>
-                                ${customHeroBanner ? '<button onclick="resetHeroBanner()" style="background: #FF3B30; color: white; border: none; padding: 10px 15px; border-radius: 6px; margin: 5px; cursor: pointer; font-size: 12px;">🔄 恢复默认</button>' : ''}
-                                <br><small style="color: #666;">建议尺寸: 1200x400px | 格式: JPG/PNG/WebP | 大小: <2MB</small>
-                            </div>
+
                             
                             <!-- WeChat QR Code Section -->
                             <div style="background: #f0f8f0; padding: 15px; border-radius: 8px; margin-bottom: 10px;">
@@ -1156,49 +1048,47 @@
             }
         }
 
-        // Hero Banner Management Functions
-        function uploadHeroBanner() {
+
+            
+
+
+
+
+
+
+
+        // WeChat QR Code Management Functions
+        function uploadWeChatQR() {
             const input = document.createElement('input');
             input.type = 'file';
-            input.accept = 'image/jpeg,image/jpg,image/png,image/webp';
-            
+            input.accept = 'image/*';
             input.onchange = function(e) {
                 const file = e.target.files[0];
                 if (!file) return;
-                
-                // Validate file size (max 2MB)
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('图片文件过大，请选择小于2MB的图片');
-                    return;
-                }
-                
-                // Validate file type
-                if (!file.type.match(/^image\/(jpeg|jpg|png|webp)$/)) {
-                    alert('请选择 JPG、PNG 或 WebP 格式的图片');
-                    return;
-                }
                 
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const img = new Image();
                     img.onload = function() {
-                        // Create canvas for image optimization
+                        // Create canvas for resizing
                         const canvas = document.createElement('canvas');
                         const ctx = canvas.getContext('2d');
                         
-                        // Calculate optimal dimensions (max 1200x400, maintain aspect ratio)
-                        const maxWidth = 1200;
-                        const maxHeight = 400;
-                        let { width, height } = img;
+                        // Set dimensions (preserve aspect ratio)
+                        const maxSize = 250;
+                        let width = img.width;
+                        let height = img.height;
                         
-                        if (width > maxWidth) {
-                            height = (height * maxWidth) / width;
-                            width = maxWidth;
-                        }
-                        
-                        if (height > maxHeight) {
-                            width = (width * maxHeight) / height;
-                            height = maxHeight;
+                        if (width > height) {
+                            if (width > maxSize) {
+                                height = (height * maxSize) / width;
+                                width = maxSize;
+                            }
+                        } else {
+                            if (height > maxSize) {
+                                width = (width * maxSize) / height;
+                                height = maxSize;
+                            }
                         }
                         
                         canvas.width = width;
@@ -1207,162 +1097,6 @@
                         // Draw and compress image
                         ctx.drawImage(img, 0, 0, width, height);
                         const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                        
-                        // Save to localStorage
-                        localStorage.setItem('jamCustomHeroBanner', compressedDataUrl);
-                        customHeroBanner = compressedDataUrl;
-                        
-                        // Apply to hero section
-                        applyCustomHeroBanner();
-                        
-                        alert('英雄横幅已成功上传并应用！');
-                        
-                        // Refresh admin panel if open
-                        closeAdminPanel();
-                        showAdminPanel();
-                    };
-                    img.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            };
-            
-            input.click();
-        }
-
-        function applyCustomHeroBanner() {
-            const heroSection = document.querySelector('.hero');
-            const customImage = document.querySelector('.hero-custom-image');
-            
-            if (customHeroBanner && heroSection && customImage) {
-                // Only apply if admin has uploaded a custom image
-                customImage.src = customHeroBanner;
-                heroSection.classList.add('has-custom-bg');
-            }
-            // If no custom image uploaded by admin, keep the default custom image
-        }
-
-        function resetHeroBanner() {
-            if (confirm('确定要恢复默认的英雄横幅吗？')) {
-                localStorage.removeItem('jamCustomHeroBanner');
-                customHeroBanner = null;
-                
-                const heroSection = document.querySelector('.hero');
-                const customImage = document.querySelector('.hero-custom-image');
-                
-                if (heroSection) {
-                    heroSection.classList.remove('has-custom-bg');
-                }
-                
-                if (customImage) {
-                    customImage.src = '';
-                }
-                
-                alert('已恢复默认英雄横幅');
-                
-                // Refresh admin panel if open
-                closeAdminPanel();
-                showAdminPanel();
-            }
-        }
-
-        function previewCurrentBanner() {
-            const heroSection = document.querySelector('.hero');
-            if (!heroSection) return;
-            
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            
-            canvas.width = 600;
-            canvas.height = 200;
-            
-            if (customHeroBanner) {
-                const img = new Image();
-                img.onload = function() {
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    // Add overlay
-                    ctx.fillStyle = 'rgba(255, 204, 0, 0.8)';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    
-                    // Open preview in new window
-                    const win = window.open('', '_blank', 'width=620,height=240');
-                    win.document.write(`
-                        <html>
-                            <head><title>Hero Banner Preview</title></head>
-                            <body style="margin:0;background:#f0f0f0;display:flex;align-items:center;justify-content:center;">
-                                <img src="${canvas.toDataURL()}" style="border:3px solid #1A1A1A;border-radius:12px;">
-                            </body>
-                        </html>
-                    `);
-                };
-                img.src = customHeroBanner;
-            } else {
-                // Draw default banner
-                ctx.fillStyle = '#FFCC00';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#1A1A1A';
-                ctx.font = 'bold 48px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillText('JAM', canvas.width/2, canvas.height/2 + 15);
-                
-                const win = window.open('', '_blank', 'width=620,height=240');
-                win.document.write(`
-                    <html>
-                        <head><title>Hero Banner Preview - Default</title></head>
-                        <body style="margin:0;background:#f0f0f0;display:flex;align-items:center;justify-content:center;">
-                            <img src="${canvas.toDataURL()}" style="border:3px solid #1A1A1A;border-radius:12px;">
-                        </body>
-                    </html>
-                `);
-            }
-        }
-
-        // WeChat QR Code Management Functions
-        function uploadWeChatQR() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/jpeg,image/jpg,image/png,image/webp';
-            
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                if (!file) return;
-                
-                // Validate file size (max 2MB)
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('图片文件过大，请选择小于2MB的图片');
-                    return;
-                }
-                
-                // Validate file type
-                if (!file.type.match(/^image\/(jpeg|jpg|png|webp)$/)) {
-                    alert('请选择 JPG、PNG 或 WebP 格式的图片');
-                    return;
-                }
-                
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = new Image();
-                    img.onload = function() {
-                        // Create canvas for image optimization
-                        const canvas = document.createElement('canvas');
-                        const ctx = canvas.getContext('2d');
-                        
-                        // Preserve original aspect ratio for QR codes (don't force square)
-                        const maxSize = 500;
-                        let { width, height } = img;
-                        
-                        // Scale down if too large, but preserve aspect ratio
-                        if (width > maxSize || height > maxSize) {
-                            const scale = Math.min(maxSize / width, maxSize / height);
-                            width = Math.floor(width * scale);
-                            height = Math.floor(height * scale);
-                        }
-                        
-                        canvas.width = width;
-                        canvas.height = height;
-                        
-                        // Draw the entire image without cropping
-                        ctx.drawImage(img, 0, 0, width, height);
-                        const compressedDataUrl = canvas.toDataURL('image/png', 0.9);
                         
                         // Save to localStorage
                         localStorage.setItem('jamCustomWeChatQR', compressedDataUrl);
@@ -1381,7 +1115,6 @@
                 };
                 reader.readAsDataURL(file);
             };
-            
             input.click();
         }
 
@@ -1447,21 +1180,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             updatePromoStats();
             
-            // Always show custom hero image by default (no need to check localStorage)
-            const heroSection = document.querySelector('.hero');
-            if (heroSection) {
-                heroSection.classList.add('has-custom-bg');
-            }
-            
             // Always show WeChat QR code section by default
             const qrSection = document.querySelector('.cs-qr-section');
             if (qrSection) {
                 qrSection.style.display = 'flex';
-            }
-            
-            // Apply custom hero banner if exists (for admin overrides)
-            if (customHeroBanner) {
-                applyCustomHeroBanner();
             }
             
             // Apply custom WeChat QR code if exists (for admin overrides)
