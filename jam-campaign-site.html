@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAM - 每天1分钟提升英语口语</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>JAM - 免费领取1个月会员</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyMCBRMTYgMTYgMjAgMTYgTDQ0IDE2IFE0OCAxNiA0OCAyMCBMNDggMzYgUTQ4IDQwIDQ0IDQwIEwzMiA0MCBMMJICA0OCAzMiA0MCBMJDAGNDAGIJQMTYGNDAMTYGNDAJWII0ZmlsbD0iIzAxNDdGRSIvPgo8dGV4dCB4PSIzMiIgeT0iMzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBzdHlsZT0iZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDkwMDsgZm9udC1zaXplOiAxNHB4OyI+SkFNITwvdGV4dD4KPHN2Zz4K">
@@ -1178,6 +1181,17 @@
 
         // Initialize promo codes on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Force cache refresh for Safari
+            if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) {
+                // Add version parameter to force refresh
+                if (!window.location.search.includes('v=')) {
+                    const separator = window.location.search ? '&' : '?';
+                    const newUrl = window.location.href + separator + 'v=' + Date.now();
+                    window.location.replace(newUrl);
+                    return;
+                }
+            }
+            
             updatePromoStats();
             
             // Always show WeChat QR code section by default
