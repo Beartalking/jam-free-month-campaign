@@ -84,7 +84,7 @@
         }
 
         .hero-custom-image {
-            display: block;
+            display: block !important;
             width: 100%;
             height: 100%;
             min-height: 300px;
@@ -93,14 +93,17 @@
         }
 
         .hero.has-custom-bg .hero-custom-image {
-            display: block;
+            display: block !important;
         }
 
         .hero.has-custom-bg .hero-default-content {
-            display: none;
+            display: none !important;
         }
 
-
+        /* Ensure default content is hidden when custom image is shown */
+        .hero-default-content {
+            display: none !important;
+        }
 
         .hero-image {
             position: relative;
@@ -556,9 +559,9 @@
                     <div class="step"></div>
                 </div>
             </div>
-            <div class="hero">
+            <div class="hero has-custom-bg">
                 <!-- Custom Image (now shown by default) -->
-                <img class="hero-custom-image" alt="JAM Personal Speaking Coach" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDYwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjQjNEQ0ZGIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSI0MCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTgwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSIzMDAiIGN5PSI5MCIgcj0iMjUiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjQwMCIgY3k9IjEwMCIgcj0iMzUiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjUwMCIgY3k9IjcwIiByPSIyMCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTAgMjAwIEw2MDAgMjAwIEw2MDAgMzAwIEwwIDMwMCBaIiBmaWxsPSIjOTlDQzMzIi8+CjxwYXRoIGQ9Ik0wIDIwMCBRMTUwIDE4MCAzMDAgMjAwIFE0NTAgMjIwIDYwMCAyMDAiIGZpbGw9IiM5OENDMzMiLz4KPHJlY3QgeD0iNDAiIHk9IjE2MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI0Y0QjM3NyIvPgo8Y2lyY2xlIGN4PSI4MCIgY3k9IjE4MCIgcj0iMjAiIGZpbGw9IiMzMzMiLz4KPHBhdGggZD0iTTYwIDE5MCBRNjAgMTgwIDcwIDE4MCBMOTAgMTgwIFE5MCAxOTAgODAgMTkwIiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik02NSAxOTUgTDc1IDE5NSBNNzAgMTkwIEw3MCAyMDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0xMDAgMTgwIEwxMDAgMjAwIEw4MCAyMDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjE5MCIgcj0iNSIgZmlsbD0iIzMzMyIvPgo8cGF0aCBkPSJNNDAwIDE2MCBRNDAwIDE1MCA0MTAgMTUwIEw0OTAgMTUwIFE1MDAgMTUwIDUwMCAxNjAiIGZpbGw9IiNGRkNDMDAiLz4KPHJlY3QgeD0iNDEwIHk9MTUwIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNGRkNDMDAiIHJ4PSIxMCIvPgo8Y2lyY2xlIGN4PSI0NTAgY3k9MTgwIHI9IjEwIiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik00NDAgMTkwIFE0NDAgMTgwIDQ1MCAxODAgTDUwMCAxODAgUTUwMCAxOTAgNDUwIDE5MCIgZmlsbD0iIzMzMyIvPgo8cGF0aCBkPSJNNDQ1IDE5NSBMNDU1IDE5NSBNNDUwIDE5MCBMNDUwIDIwMCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTQ4MCAxODAgTDQ4MCAyMDAgTDQ2MCAyMDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxjaXJjbGUgY3g9IjQ4MCIgY3k9IjE5MCIgcj0iMyIgZmlsbD0iIzMzMyIvPgo8cGF0aCBkPSJNMzAwIDEwMCBRMzAwIDkwIDMxMCA5MCBMMzQwIDkwIFEzNTAgOTAgMzUwIDEwMCIgZmlsbD0iIzAxNDdGRSIvPgo8dGV4dCB4PSIzMjUiIHk9IjExMCIgdGV4dC1hbmNob3I9Im1pZGRkbGUiIGZpbGw9IndoaXRlIiBzdHlsZT0iZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDkwMDsgZm9udC1zaXplOiAyNHB4OyI+SkFNITwvdGV4dD4KPHRleHQgeD0iMzAwIiB5PSIyNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMTQ3RkUiIHN0eWxlPSJmb250LWZhbWlseTogLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogNzAwOyBmb250LXNpemU6IDI0cHg7Ij7kupLlmajkuIDkuKrmtYvor5U8L3RleHQ+Cjwvc3ZnPgo=" />
+                <img class="hero-custom-image" alt="JAM Personal Speaking Coach" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDYwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjQjNEQ0ZGIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSI0MCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iMTgwIiBjeT0iNjAiIHI9IjMwIiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSIzMDAiIGN5PSI5MCIgcj0iMjUiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjQwMCIgY3k9IjEwMCIgcj0iMzUiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjUwMCIgY3k9IjcwIiByPSIyMCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTAgMjAwIEw2MDAgMjAwIEw2MDAgMzAwIEwwIDMwMCBaIiBmaWxsPSIjOTlDQzMzIi8+CjxwYXRoIGQ9Ik0wIDIwMCBRMTUwIDE4MCAzMDAgMjAwIFE0NTAgMjIwIDYwMCAyMDAiIGZpbGw9IiM5OENDMzMiLz4KPHJlY3QgeD0iNDAiIHk9IjE2MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI0Y0QjM3NyIvPgo8Y2lyY2xlIGN4PSI4MCIgY3k9IjE4MCIgcj0iMjAiIGZpbGw9IiMzMzMiLz4KPHBhdGggZD0iTTYwIDE5MCBRNjAgMTgwIDcwIDE4MCBMOTAgMTgwIFE5MCAxOTAgODAgMTkwIiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik02NSAxOTUgTDc1IDE5NSBNNzAgMTkwIEw3MCAyMDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0xMDAgMTgwIEwxMDAgMjAwIEw4MCAyMDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjE5MCIgcj0iNSIgZmlsbD0iIzMzMyIvPgo8cGF0aCBkPSJNNDAwIDE2MCBRNDAwIDE1MCA0MTAgMTUwIEw0OTAgMTUwIFE1MDAgMTUwIDUwMCAxNjAiIGZpbGw9IiNGRkNDMDAiLz4KPHJlY3QgeD0iNDEwIHk9MTUwIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMDAiIHJ4PSIxMCIvPgo8Y2lyY2xlIGN4PSI0NTAgY3k9MTgwIHI9IjEwIiBmaWxsPSIjMzMzIi8+CjxwYXRoIGQ9Ik00NDAgMTkwIFE0NDAgMTgwIDQ1MCAxODAgTDUwMCAxODAgUTUwMCAxOTAgNDUwIDE5MCIgZmlsbD0iIzMzMyIvPgo8cGF0aCBkPSJNNDQ1IDE5NSBMNDU1IDE5NSBNNDUwIDE5MCBMNDUwIDIwMCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz4KPHBhdGggZD0iTTQ4MCAxODAgTDQ4MCAyMDAgTDQ2MCAyMDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxjaXJjbGUgY3g9IjQ4MCIgY3k9IjE5MCIgcj0iMyIgZmlsbD0iIzMzMyIvPgo8cGF0aCBkPSJNMzAwIDEwMCBRMzAwIDkwIDMxMCA5MCBMMzQwIDkwIFEzNTAgOTAgMzUwIDEwMCIgZmlsbD0iIzAxNDdGRSIvPgo8dGV4dCB4PSIzMjUiIHk9IjExMCIgdGV4dC1hbmNob3I9Im1pZGRkbGUiIGZpbGw9IndoaXRlIiBzdHlsZT0iZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgc2Fucy1zZXJpZjsgZm9udC13ZWlnaHQ6IDkwMDsgZm9udC1zaXplOiAyNHB4OyI+SkFNITwvdGV4dD4KPHRleHQgeD0iMzAwIiB5PSIyNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMwMTQ3RkUiIHN0eWxlPSJmb250LWZhbWlseTogLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogNzAwOyBmb250LXNpemU6IDI0cHg7Ij7kupLlmajkuIDkuKrmtYvor5U8L3RleHQ+Cjwvc3ZnPgo=" />
             
             <!-- Default Content (now hidden by default) -->
             <div class="hero-default-content" style="display: none;">
@@ -713,7 +716,7 @@
             </p>
 
             <p style="text-align: center; margin-bottom: 30px; color: #5C5C5C;">
-                如果您习惯用微信，也可以扫码添加JAM的微信小助理。
+                如果您习惯用微信，也可以添加JAM的微信小助理"Jamtalk"。
             </p>
 
             <div class="cs-qr-section">
